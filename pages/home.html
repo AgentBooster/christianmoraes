@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Christian Moraes - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-black: #000000;
+            --glass-border: rgba(255, 255, 255, 0.12);
+            --glass-bg: rgba(255, 255, 255, 0.02);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-black);
+            color: white;
+            margin: 0;
+            overflow-x: hidden;
+            overflow-y: auto;
+            min-height: 100vh;
+        }
+
+        /* FONDO - ESCENA DE ILUMINACIÓN */
+        .background-container {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .neon-ring {
+            position: absolute;
+            width: 92vw;
+            max-width: 900px;
+            aspect-ratio: 1/1;
+            border-radius: 50%;
+            border: 48px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 
+                0 0 100px rgba(255, 255, 255, 0.3), 
+                inset 0 0 80px rgba(255, 255, 255, 0.2);
+            filter: blur(55px);
+            opacity: 0.85;
+            pointer-events: none;
+            animation: pulse-ring 7s ease-in-out infinite;
+        }
+
+        @keyframes pulse-ring {
+            0%, 100% { transform: scale(1); opacity: 0.7; }
+            50% { transform: scale(1.05); opacity: 0.9; }
+        }
+
+        .stage-light {
+            position: absolute;
+            bottom: -250px;
+            width: 100%;
+            height: 500px;
+            background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.12) 0%, transparent 70%);
+            filter: blur(120px);
+            pointer-events: none;
+        }
+
+
+        /* EFECTO LIQUID GLASS */
+        .liquid-glass {
+            background: linear-gradient(
+                135deg,
+                rgba(255, 255, 255, 0.08),
+                rgba(255, 255, 255, 0.02)
+            );
+            backdrop-filter: blur(55px) saturate(240%);
+            -webkit-backdrop-filter: blur(55px) saturate(240%);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            position: relative;
+            box-shadow: 
+                0 24px 50px rgba(0, 0, 0, 0.6),
+                inset 0 0 14px rgba(255, 255, 255, 0.08);
+        }
+
+
+        .glass-edge::after {
+            content: "";
+            position: absolute;
+            inset: -1px;
+            border-radius: inherit;
+            padding: 1px;
+            background: linear-gradient(
+                145deg, 
+                rgba(255, 255, 255, 0.6) 0%, 
+                rgba(255, 255, 255, 0) 40%, 
+                rgba(255, 255, 255, 0) 60%, 
+                rgba(255, 255, 255, 0.25) 100%
+            );
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+
+        .profile-inner {
+            width: 100%;
+            height: 100%;
+            border-radius: 9999px;
+            overflow: hidden;
+        }
+
+        .profile-img {
+            transform: scale(1.12);
+            transform-origin: center;
+            display: block;
+        }
+
+
+
+        /* NAVEGACIÓN */
+        .nav-link {
+            padding: 10px 20px;
+            border-radius: 999px;
+            transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        @media (min-width: 768px) {
+            .nav-link {
+                padding: 12px 28px;
+                font-size: 15px;
+            }
+        }
+
+        .nav-link:hover {
+            color: white;
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        .nav-link.active {
+            color: white;
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* BOTONES SOCIALES */
+        .social-btn {
+            width: 62px;
+            height: 62px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @media (min-width: 768px) {
+            .social-btn {
+                width: 72px;
+                height: 72px;
+            }
+        }
+
+        .social-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-4px);
+        }
+
+        /* LLUVIA DE EMOJIS */
+        .falling-emoji {
+            position: fixed;
+            font-size: 28px;
+            z-index: 500;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        /* CURSOR DE ESCRITURA */
+        .typing-cursor::after {
+            content: '';
+            display: inline-block;
+            width: 3px;
+            height: 0.9em;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.9), rgba(255,255,255,0.3));
+            margin-left: 6px;
+            vertical-align: middle;
+            border-radius: 4px;
+            box-shadow: 0 0 12px rgba(255, 255, 255, 0.6);
+            animation: blink 0.9s step-end infinite;
+        }
+
+        @keyframes blink {
+            from, to { opacity: 1; }
+            50% { opacity: 0; }
+        }
+    </style>
+</head>
+<body class="flex flex-col items-center">
+    
+    <!-- Fondo fijo -->
+    <div class="background-container">
+        <div class="neon-ring"></div>
+        <div class="stage-light"></div>
+    </div>
+
+    <!-- Contenedor de scroll real -->
+    <div class="relative z-10 w-full flex flex-col items-center px-4 py-8 md:py-12 min-h-screen">
+        
+        <!-- Barra de Navegación -->
+        <nav class="liquid-glass glass-edge px-3 py-2 md:py-2.5 rounded-full mb-12 md:mb-28 flex space-x-1 md:space-x-1.5 items-center max-w-full overflow-x-auto no-scrollbar">
+            <a href="#" class="nav-link active">Home</a>
+            <a href="#" class="nav-link">Projects</a>
+            <a href="#" class="nav-link">Education</a>
+            <a href="#" class="nav-link">About</a>
+        </nav>
+
+        <!-- Contenido principal -->
+        <main class="w-full max-w-6xl flex flex-col items-center flex-grow justify-center pb-20">
+            
+            <div class="flex flex-col md:flex-row items-center justify-center gap-12 md:gap-14 w-full text-center md:text-left">
+                <!-- Foto de Perfil -->
+                <div id="profile-pic" class="w-[13rem] h-[13rem] md:w-[17rem] md:h-[17rem] lg:w-[18rem] lg:h-[18rem] rounded-full p-1 liquid-glass glass-edge flex-shrink-0 cursor-pointer transition-transform active:scale-95">
+                    <div class="profile-inner">
+                        <img src="../assets/Mi Diseño sin título (2).png" 
+                             alt="Avatar" 
+                             draggable="false"
+                             oncontextmenu="return false;"
+                             class="w-full h-full object-cover rounded-full select-none pointer-events-none profile-img">
+                    </div>
+                </div>
+
+                <!-- Textos Hero -->
+                <div class="flex-1 md:max-w-3xl overflow-visible">
+                    <h1 id="user-name" class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-8xl font-bold tracking-tighter mb-5 drop-shadow-2xl typing-cursor min-h-[1.2em] break-words"></h1>
+                    
+                    <p class="text-white/80 text-2xl md:text-4xl font-medium mb-5 md:mb-7">Full-Stack Developer & Data Scientist</p>
+                    
+                    <p class="text-white/40 leading-relaxed max-w-2xl text-lg md:text-xl font-normal mx-auto md:mx-0 px-2 md:px-0">
+                        Passionate about the intersection of code, hardware, artificial intelligence, and efficiency. I develop digital systems for automation, LLMs, and application deployment, focused on scalability.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Botones de Acción y Redes (Ajuste de ancho para móvil) -->
+            <div class="mt-14 md:mt-16 flex flex-col sm:flex-row items-center justify-center gap-8 w-full">
+                <!-- Botón corregido: w-fit para evitar que se estire en móvil -->
+                <button class="liquid-glass glass-edge px-11 md:px-15 py-[1.125rem] md:py-[1.375rem] rounded-full flex items-center gap-3 font-bold text-[0.95rem] md:text-[1.05rem] tracking-wide uppercase transition-all hover:bg-white/10 active:scale-95 w-fit justify-center">
+                    Download CV
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 17V3"/><path d="m6 11 6 6 6-6"/><path d="M19 21H5"/></svg>
+                </button>
+
+                <!-- Redes sociales -->
+                <div class="flex gap-5">
+                    <a href="https://github.com/AgentBooster/portfolio-projects" class="liquid-glass glass-edge social-btn" title="GitHub" target="_blank" rel="noopener noreferrer">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32" aria-label="GitHub">
+                          <path fill="#ffffff" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.387 .6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04 -3.338.726-4.042-1.61-4.042-1.61 -.546-1.387-1.333-1.756-1.333-1.756 -1.089-.745.084-.73.084-.73 1.205.084 1.84 1.236 1.84 1.236 1.07 1.835 2.807 1.305 3.492.998 .108-.776.418-1.305.762-1.605 -2.665-.305-5.467-1.334-5.467-5.93 0-1.31.47-2.38 1.236-3.22 -.124-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.3 1.23 .957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.29-1.552 3.297-1.23 3.297-1.23 .653 1.653.242 2.873.118 3.176 .77.84 1.235 1.91 1.235 3.22 0 4.61-2.807 5.624-5.48 5.92 .43.37.823 1.102.823 2.222 0 1.606-.014 2.898-.014 3.293 0 .32.216.694.825.576 C20.565 22.092 24 17.592 24 12.297 c0-6.627-5.373-12-12-12z" />
+                        </svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/christian-moraes-pedrozo-24702a307/" class="liquid-glass glass-edge social-btn" title="LinkedIn" target="_blank" rel="noopener noreferrer">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32" aria-label="LinkedIn">
+                          <path fill="#ffffff" d="M20.447 20.452h-3.554v-5.569 c0-1.328-.027-3.036-1.849-3.036 -1.85 0-2.135 1.445-2.135 2.939 v5.666H9.356V9h3.414v1.561 h.049c.476-.9 1.637-1.848 3.369-1.848 3.602 0 4.27 2.37 4.27 5.456v6.283zM5.337 7.433 c-1.144 0-2.069-.926-2.069-2.07 0-1.144.925-2.07 2.069-2.07 1.144 0 2.07.926 2.07 2.07 0 1.144-.926 2.07-2.07 2.07zm 1.777 13.019H3.56V9h3.554v11.452z" />
+                        </svg>
+                    </a>
+                    <a href="mailto:cmmoraespedrozo@gmail.com" class="liquid-glass glass-edge social-btn" title="Email" target="_blank" rel="noopener noreferrer">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32" aria-label="Email">
+                          <path fill="#ffffff" d="M3 5h18a2 2 0 0 1 2 2v10 a2 2 0 0 1-2 2H3 a2 2 0 0 1-2-2V7 a2 2 0 0 1 2-2zm0 2 9 5.8L21 7H3zm18 10V9.3 l-8.4 5.4a1 1 0 0 1-1.2 0 L3 9.3V17h18z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <script>
+        // Gestión de navegación
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                navLinks.forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+            });
+        });
+
+        // Emojis tecnológicos
+        const emojiList = ['🤖', '🧠', '🦾', '⚙️', '💻', '🌐', '🔋', '⚡', '💡', '👨‍💻', '📈', '🚀', '☁️', '🔗', '💼', '👋'];
+
+        function startEmojiRain() {
+            const rainCount = 25;
+            const container = document.body;
+
+            for (let i = 0; i < rainCount; i++) {
+                const emojiElement = document.createElement('div');
+                emojiElement.className = 'falling-emoji';
+                emojiElement.textContent = emojiList[Math.floor(Math.random() * emojiList.length)];
+                
+                const randomX = Math.random() * 100;
+                emojiElement.style.left = randomX + 'vw';
+                emojiElement.style.top = '-10vh';
+                
+                container.appendChild(emojiElement);
+
+                const duration = Math.random() * 1000 + 1500;
+                const delay = Math.random() * 800;
+
+                emojiElement.animate([
+                    { top: '-10vh', opacity: 1 },
+                    { top: '110vh', opacity: 1 }
+                ], {
+                    duration: duration,
+                    delay: delay,
+                    easing: 'linear'
+                }).onfinish = () => emojiElement.remove();
+            }
+        }
+
+        // Efecto Typewriter secuencia completa
+        async function typeWriter() {
+            const nameElement = document.getElementById('user-name');
+            const introText = "Hi, my name is...";
+            const finalName = "Christian Moraes";
+            
+            const typeSpeed = 60;
+            const eraseSpeed = 40;
+            const waitTime = 1200;
+
+            const type = async (text) => {
+                for (let i = 0; i < text.length; i++) {
+                    nameElement.textContent += text.charAt(i);
+                    await new Promise(res => setTimeout(res, typeSpeed));
+                }
+            };
+
+            const erase = async () => {
+                while (nameElement.textContent.length > 0) {
+                    nameElement.textContent = nameElement.textContent.slice(0, -1);
+                    await new Promise(res => setTimeout(res, eraseSpeed));
+                }
+            };
+
+            nameElement.textContent = "";
+            await new Promise(res => setTimeout(res, 500));
+            
+            await type(introText);
+            await new Promise(res => setTimeout(res, waitTime));
+            
+            await erase();
+            await new Promise(res => setTimeout(res, 400));
+            
+            await type(finalName);
+            
+            setTimeout(() => {
+                nameElement.classList.remove('typing-cursor');
+            }, 1500);
+        }
+
+        window.onload = () => {
+            typeWriter();
+        };
+
+        document.getElementById('profile-pic').addEventListener('click', startEmojiRain);
+    </script>
+</body>
+</html>
