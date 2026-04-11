@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Christian Moraes</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-black: #000000;
+            --glass-border: rgba(255, 255, 255, 0.12);
+            --glass-bg: rgba(255, 255, 255, 0.02);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-black);
+            color: white;
+            margin: 0;
+            overflow-x: hidden;
+            overflow-y: auto;
+            min-height: 100vh;
+        }
+
+        /* FONDO - ESCENA DE ILUMINACIÓN */
+        .background-container {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .neon-ring {
+            position: absolute;
+            width: 92vw;
+            max-width: 900px;
+            aspect-ratio: 1/1;
+            border-radius: 50%;
+            border: 48px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 
+                0 0 100px rgba(255, 255, 255, 0.3), 
+                inset 0 0 80px rgba(255, 255, 255, 0.2);
+            filter: blur(55px);
+            opacity: 0.85;
+            pointer-events: none;
+            animation: pulse-ring 7s ease-in-out infinite;
+        }
+
+        @keyframes pulse-ring {
+            0%, 100% { transform: scale(1); opacity: 0.7; }
+            50% { transform: scale(1.05); opacity: 0.9; }
+        }
+
+        .stage-light {
+            position: absolute;
+            bottom: -250px;
+            width: 100%;
+            height: 500px;
+            background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.12) 0%, transparent 70%);
+            filter: blur(120px);
+            pointer-events: none;
+        }
+
+        /* EFECTO LIQUID GLASS */
+        .liquid-glass {
+            background: linear-gradient(
+                135deg,
+                rgba(255, 255, 255, 0.08),
+                rgba(255, 255, 255, 0.02)
+            );
+            backdrop-filter: blur(55px) saturate(240%);
+            -webkit-backdrop-filter: blur(55px) saturate(240%);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            position: relative;
+            box-shadow: 
+                0 24px 50px rgba(0, 0, 0, 0.6),
+                inset 0 0 14px rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-edge::after {
+            content: "";
+            position: absolute;
+            inset: -1px;
+            border-radius: inherit;
+            padding: 1px;
+            background: linear-gradient(
+                145deg, 
+                rgba(255, 255, 255, 0.6) 0%, 
+                rgba(255, 255, 255, 0) 40%, 
+                rgba(255, 255, 255, 0) 60%, 
+                rgba(255, 255, 255, 0.25) 100%
+            );
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+
+        /* NAVEGACIÓN */
+        .nav-link {
+            padding: 10px 20px;
+            border-radius: 999px;
+            transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        @media (min-width: 768px) {
+            .nav-link {
+                padding: 12px 28px;
+                font-size: 15px;
+            }
+        }
+
+        .nav-link:hover {
+            color: white;
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        .nav-link.active {
+            color: white;
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* HELPERS PARA SCROLL HORIZONTAL */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none; /* IE and Edge */
+            scrollbar-width: none; /* Firefox */
+        }
+
+        /* Custom Input Focus Hover */
+        input:focus {
+            box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.1), 0 0 20px rgba(255, 255, 255, 0.1);
+        }
+
+        .active-filter {
+            background: rgba(255, 255, 255, 0.15) !important;
+            color: white !important;
+        }
+
+        /* Tag Selectable */
+        .tag-pill {
+            transition: all 0.3s ease;
+        }
+        .tag-pill.active {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.5);
+            color: white;
+        }
+    </style>
+</head>
+<body class="flex flex-col items-center">
+    
+    <!-- Fixed Background -->
+    <div class="background-container">
+        <div class="neon-ring"></div>
+        <div class="stage-light"></div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="relative z-10 w-full flex flex-col items-center px-4 py-8 md:py-12 min-h-screen">
+        
+        <!-- Navigation Bar -->
+        <nav class="liquid-glass glass-edge px-3 py-2 md:py-2.5 rounded-full mb-12 flex space-x-1 md:space-x-1.5 items-center max-w-full overflow-x-auto no-scrollbar">
+            <a href="../index.html" class="nav-link">Home</a>
+            <a href="projects.html" class="nav-link active">Projects</a>
+            <a href="education.html" class="nav-link">Education</a>
+            <a href="about.html" class="nav-link">About</a>
+        </nav>
+
+        <!-- Main Content (Projects Layout) -->
+        <main class="w-full max-w-6xl flex flex-col flex-grow pb-20">
+            
+            <div class="mb-4">
+                <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-2">Projects</h1>
+                <p class="text-white/50 text-lg">A selection of my best algorithms, applications, and experiments.</p>
+            </div>
+
+            <!-- Filters Section -->
+            <div class="flex flex-col xl:flex-row items-center gap-4 mb-6 w-full mt-6">
+                <!-- Search Bar -->
+                <div class="relative w-full xl:w-auto flex-grow flex-shrink">
+                    <input type="text" placeholder="Search projects..." class="liquid-glass glass-edge w-full rounded-full py-3 px-6 text-white bg-transparent outline-none placeholder-white/40 border border-white/10 transition-all">
+                    <svg class="absolute right-5 top-1/2 -translate-y-1/2 w-5 h-5 text-white/40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                </div>
+                
+                <!-- Filter Buttons -->
+                <div class="flex gap-3 w-full xl:w-auto overflow-x-auto no-scrollbar pb-2 xl:pb-0">
+                    <button class="filter-btn liquid-glass glass-edge px-6 py-3 rounded-full text-sm font-semibold hover:bg-white/10 transition-all whitespace-nowrap active-filter">Featured</button>
+                    <button class="filter-btn liquid-glass glass-edge px-6 py-3 rounded-full text-sm font-semibold text-white/60 hover:bg-white/10 hover:text-white transition-all whitespace-nowrap">All</button>
+                    <button id="tags-btn" class="liquid-glass glass-edge px-6 py-3 rounded-full text-sm font-semibold text-white/60 flex items-center gap-2 hover:bg-white/10 hover:text-white transition-all whitespace-nowrap">
+                        Tags
+                        <svg class="w-4 h-4 transition-transform" id="tags-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Tags Panel (Collapsible) -->
+            <div id="tags-panel" class="hidden liquid-glass glass-edge rounded-2xl p-5 mb-8 w-full border border-white/10 transition-all duration-300 transform origin-top">
+                <div class="flex flex-wrap gap-2 md:gap-3">
+                    <span class="tag-pill px-4 py-2 rounded-full border border-white/10 bg-white/5 text-[13px] font-medium text-white/70 cursor-pointer hover:bg-white/10 hover:text-white">C-Family</span>
+                    <span class="tag-pill px-4 py-2 rounded-full border border-white/10 bg-white/5 text-[13px] font-medium text-white/70 cursor-pointer hover:bg-white/10 hover:text-white">Python</span>
+                    <span class="tag-pill px-4 py-2 rounded-full border border-white/10 bg-white/5 text-[13px] font-medium text-white/70 cursor-pointer hover:bg-white/10 hover:text-white">Machine Learning</span>
+                    <span class="tag-pill px-4 py-2 rounded-full border border-white/10 bg-white/5 text-[13px] font-medium text-white/70 cursor-pointer hover:bg-white/10 hover:text-white">Swift</span>
+                    <span class="tag-pill px-4 py-2 rounded-full border border-white/10 bg-white/5 text-[13px] font-medium text-white/70 cursor-pointer hover:bg-white/10 hover:text-white">Frontend</span>
+                    <span class="tag-pill px-4 py-2 rounded-full border border-white/10 bg-white/5 text-[13px] font-medium text-white/70 cursor-pointer hover:bg-white/10 hover:text-white">SQL</span>
+                </div>
+            </div>
+
+            <!-- Projects Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 w-full" id="projects-grid">
+                
+                <!-- PLACEHOLDER CARD 1 -->
+                <div class="liquid-glass glass-edge rounded-2xl overflow-hidden flex flex-col group cursor-pointer border border-white/10 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_20px_40px_rgba(0,0,0,0.6)]">
+                    <!-- Project Image -->
+                    <div class="h-48 w-full bg-white/5 relative overflow-hidden flex items-center justify-center">
+                        <!-- Placeholder Gradient -->
+                        <div class="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent"></div>
+                        <span class="text-white/20 text-sm font-medium z-10">[ Preview Image Placeholder ]</span>
+                    </div>
+                    <!-- Content -->
+                    <div class="p-6 flex-grow flex flex-col">
+                        <h3 class="text-xl font-bold mb-2 text-white group-hover:text-white/90 transition-colors">Neural Time Series Forecaster</h3>
+                        <p class="text-[15px] text-white/50 mb-6 flex-grow leading-relaxed">Deep learning models utilizing LSTM architectures for advanced sequence forecasting and temporal data analysis.</p>
+                        <!-- Footer -->
+                        <div class="flex items-end justify-between mt-auto">
+                            <!-- Technologies Info -->
+                            <div class="flex flex-wrap gap-x-3 gap-y-1 text-[13px] font-semibold text-white/40">
+                                <span>Python</span>
+                                <span>TensorFlow</span>
+                                <span>Keras</span>
+                            </div>
+                            <!-- Arrow Icon -->
+                            <div class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center translate-x-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
+                                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PLACEHOLDER CARD 2 -->
+                <div class="liquid-glass glass-edge rounded-2xl overflow-hidden flex flex-col group cursor-pointer border border-white/10 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_20px_40px_rgba(0,0,0,0.6)]">
+                    <!-- Project Image -->
+                    <div class="h-48 w-full bg-white/5 relative overflow-hidden flex items-center justify-center">
+                        <div class="absolute inset-0 bg-gradient-to-bl from-white/10 to-transparent"></div>
+                        <span class="text-white/20 text-sm font-medium z-10">[ Preview Image Placeholder ]</span>
+                    </div>
+                    <!-- Content -->
+                    <div class="p-6 flex-grow flex flex-col">
+                        <h3 class="text-xl font-bold mb-2 text-white group-hover:text-white/90 transition-colors">Portfolio Engine</h3>
+                        <p class="text-[15px] text-white/50 mb-6 flex-grow leading-relaxed">Complete modular portfolio infrastructure showcasing optimized workflows and dynamic component rendering.</p>
+                        <!-- Footer -->
+                        <div class="flex items-end justify-between mt-auto">
+                            <!-- Technologies Info -->
+                            <div class="flex flex-wrap gap-x-3 gap-y-1 text-[13px] font-semibold text-white/40">
+                                <span>HTML5</span>
+                                <span>Tailwind CSS</span>
+                                <span>JS</span>
+                            </div>
+                            <!-- Arrow Icon -->
+                            <div class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center translate-x-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
+                                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PLACEHOLDER CARD 3 -->
+                <div class="liquid-glass glass-edge rounded-2xl overflow-hidden flex flex-col group cursor-pointer border border-white/10 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_20px_40px_rgba(0,0,0,0.6)]">
+                    <!-- Project Image -->
+                    <div class="h-48 w-full bg-white/5 relative overflow-hidden flex items-center justify-center">
+                        <div class="absolute inset-0 bg-gradient-to-tr from-white/10 to-transparent"></div>
+                        <span class="text-white/20 text-sm font-medium z-10">[ Preview Image Placeholder ]</span>
+                    </div>
+                    <!-- Content -->
+                    <div class="p-6 flex-grow flex flex-col">
+                        <h3 class="text-xl font-bold mb-2 text-white group-hover:text-white/90 transition-colors">Kinetic Guard</h3>
+                        <p class="text-[15px] text-white/50 mb-6 flex-grow leading-relaxed">Swift-based mobile utility focused on robust system state supervision and localized event handling.</p>
+                        <!-- Footer -->
+                        <div class="flex items-end justify-between mt-auto">
+                            <!-- Technologies Info -->
+                            <div class="flex flex-wrap gap-x-3 gap-y-1 text-[13px] font-semibold text-white/40">
+                                <span>Swift</span>
+                                <span>iOS SDK</span>
+                            </div>
+                            <!-- Arrow Icon -->
+                            <div class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center translate-x-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
+                                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts for Interactivity -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // --- 1. FILTER BUTTONS BEHAVIOR ---
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Remove active styles from all
+                    filterBtns.forEach(b => {
+                        b.classList.remove('active-filter');
+                        b.classList.add('text-white/60');
+                    });
+                    // Set active style to clicked
+                    btn.classList.add('active-filter');
+                    btn.classList.remove('text-white/60');
+                });
+            });
+
+            // --- 2. TAGS MENU TOGGLE ---
+            const tagsBtn = document.getElementById('tags-btn');
+            const tagsPanel = document.getElementById('tags-panel');
+            const tagsIcon = document.getElementById('tags-icon');
+
+            tagsBtn.addEventListener('click', () => {
+                const isHidden = tagsPanel.classList.contains('hidden');
+                if (isHidden) {
+                    tagsPanel.classList.remove('hidden');
+                    // Small delay to allow display flex to apply before opacity fades in (optional smooth effect)
+                    setTimeout(() => {
+                        tagsPanel.classList.add('opacity-100', 'scale-y-100');
+                    }, 10);
+                    tagsBtn.classList.add('active-filter');
+                    tagsBtn.classList.remove('text-white/60');
+                    tagsIcon.classList.add('rotate-180');
+                } else {
+                    tagsPanel.classList.add('hidden');
+                    tagsBtn.classList.remove('active-filter');
+                    tagsBtn.classList.add('text-white/60');
+                    tagsIcon.classList.remove('rotate-180');
+                }
+            });
+
+            // --- 3. TAG PILLS BEHAVIOR ---
+            const tagPills = document.querySelectorAll('.tag-pill');
+            tagPills.forEach(pill => {
+                pill.addEventListener('click', () => {
+                    pill.classList.toggle('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
