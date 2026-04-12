@@ -23,154 +23,49 @@
             min-height: 100vh;
         }
 
-        /* FONDO - ESCENA DE ILUMINACIÓN */
         .background-container {
-            position: fixed;
-            inset: 0;
-            z-index: -1;
-            background: #000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
+            position: fixed; inset: 0; z-index: -1; background: #000; display: flex; justify-content: center; align-items: center; overflow: hidden;
         }
 
         .neon-ring {
-            position: absolute;
-            width: 92vw;
-            max-width: 900px;
-            aspect-ratio: 1/1;
-            border-radius: 50%;
-            border: 48px solid rgba(255, 255, 255, 0.5);
-            box-shadow: 
-                0 0 100px rgba(255, 255, 255, 0.3), 
-                inset 0 0 80px rgba(255, 255, 255, 0.2);
-            filter: blur(55px);
-            opacity: 0.85;
-            pointer-events: none;
-            animation: pulse-ring 7s ease-in-out infinite;
+            position: absolute; width: 92vw; max-width: 900px; aspect-ratio: 1/1; border-radius: 50%;
+            border: 48px solid rgba(255, 255, 255, 0.5); box-shadow: 0 0 100px rgba(255, 255, 255, 0.3), inset 0 0 80px rgba(255, 255, 255, 0.2);
+            filter: blur(55px); opacity: 0.85; pointer-events: none; animation: pulse-ring 7s ease-in-out infinite;
         }
+        @keyframes pulse-ring { 0%, 100% { transform: scale(1); opacity: 0.7; } 50% { transform: scale(1.05); opacity: 0.9; } }
 
-        @keyframes pulse-ring {
-            0%, 100% { transform: scale(1); opacity: 0.7; }
-            50% { transform: scale(1.05); opacity: 0.9; }
-        }
+        .stage-light { position: absolute; bottom: -250px; width: 100%; height: 500px; background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.12) 0%, transparent 70%); filter: blur(120px); pointer-events: none; }
 
-        .stage-light {
-            position: absolute;
-            bottom: -250px;
-            width: 100%;
-            height: 500px;
-            background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.12) 0%, transparent 70%);
-            filter: blur(120px);
-            pointer-events: none;
-        }
-
-        /* EFECTO LIQUID GLASS */
         .liquid-glass {
-            background: linear-gradient(
-                135deg,
-                rgba(255, 255, 255, 0.08),
-                rgba(255, 255, 255, 0.02)
-            );
-            backdrop-filter: blur(55px) saturate(240%);
-            -webkit-backdrop-filter: blur(55px) saturate(240%);
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            position: relative;
-            box-shadow: 
-                0 24px 50px rgba(0, 0, 0, 0.6),
-                inset 0 0 14px rgba(255, 255, 255, 0.08);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+            backdrop-filter: blur(55px) saturate(240%); -webkit-backdrop-filter: blur(55px) saturate(240%);
+            border: 1px solid rgba(255, 255, 255, 0.18); position: relative; box-shadow: 0 24px 50px rgba(0, 0, 0, 0.6), inset 0 0 14px rgba(255, 255, 255, 0.08);
         }
 
         .glass-edge::after {
-            content: "";
-            position: absolute;
-            inset: -1px;
-            border-radius: inherit;
-            padding: 1px;
-            background: linear-gradient(
-                145deg, 
-                rgba(255, 255, 255, 0.6) 0%, 
-                rgba(255, 255, 255, 0) 40%, 
-                rgba(255, 255, 255, 0) 60%, 
-                rgba(255, 255, 255, 0.25) 100%
-            );
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            mask-composite: exclude;
-            pointer-events: none;
+            content: ""; position: absolute; inset: -1px; border-radius: inherit; padding: 1px;
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0) 40%, rgba(255, 255, 255, 0) 60%, rgba(255, 255, 255, 0.25) 100%);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); mask-composite: exclude; pointer-events: none;
         }
 
-        /* NAVEGACIÓN */
-        .nav-link {
-            padding: 10px 20px;
-            border-radius: 999px;
-            transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
-            color: rgba(255, 255, 255, 0.5);
-            font-size: 14px;
-            font-weight: 600;
-        }
-
-        @media (min-width: 768px) {
-            .nav-link {
-                padding: 12px 28px;
-                font-size: 15px;
-            }
-        }
-
-        .nav-link:hover {
-            color: white;
-            background: rgba(255, 255, 255, 0.06);
-        }
-
-        .nav-link.active {
-            color: white;
-            background: rgba(255, 255, 255, 0.15);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        /* HELPERS PARA SCROLL HORIZONTAL */
-        .no-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-        .no-scrollbar {
-            -ms-overflow-style: none; /* IE and Edge */
-            scrollbar-width: none; /* Firefox */
-        }
-
-        /* Custom Input Focus Hover */
-        input:focus {
-            box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.1), 0 0 20px rgba(255, 255, 255, 0.1);
-        }
-
-        .active-filter {
-            background: rgba(255, 255, 255, 0.15) !important;
-            color: white !important;
-        }
-
-        /* Tag Selectable */
-        .tag-pill {
-            transition: all 0.3s ease;
-        }
-        .tag-pill.active {
-            background: rgba(255, 255, 255, 0.2);
-            border-color: rgba(255, 255, 255, 0.5);
-            color: white;
-        }
+        .nav-link { padding: 10px 20px; border-radius: 999px; transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); color: rgba(255, 255, 255, 0.5); font-size: 14px; font-weight: 600; }
+        @media (min-width: 768px) { .nav-link { padding: 12px 28px; font-size: 15px; } }
+        .nav-link:hover { color: white; background: rgba(255, 255, 255, 0.06); }
+        .nav-link.active { color: white; background: rgba(255, 255, 255, 0.15); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); }
+        .no-scrollbar::-webkit-scrollbar { display: none; } .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        input:focus { box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.1), 0 0 20px rgba(255, 255, 255, 0.1); }
+        .active-filter { background: rgba(255, 255, 255, 0.15) !important; color: white !important; }
+        .tag-pill { transition: all 0.3s ease; }
+        .tag-pill.active { background: rgba(255, 255, 255, 0.2); border-color: rgba(255, 255, 255, 0.5); color: white; }
     </style>
 </head>
 <body class="flex flex-col items-center">
     
-    <!-- Fixed Background -->
-    <div class="background-container">
-        <div class="neon-ring"></div>
-        <div class="stage-light"></div>
-    </div>
+    <div class="background-container"><div class="neon-ring"></div><div class="stage-light"></div></div>
 
-    <!-- Main Container -->
     <div class="relative z-10 w-full flex flex-col items-center px-4 py-8 md:py-12 min-h-screen">
         
-        <!-- Navigation Bar -->
         <nav class="liquid-glass glass-edge px-3 py-2 md:py-2.5 rounded-full mb-12 flex space-x-1 md:space-x-1.5 items-center max-w-full overflow-x-auto no-scrollbar">
             <a href="../index.html" class="nav-link">Home</a>
             <a href="projects.html" class="nav-link active">Projects</a>
@@ -178,7 +73,6 @@
             <a href="about.html" class="nav-link">About</a>
         </nav>
 
-        <!-- Main Content (Projects Layout) -->
         <main class="w-full max-w-6xl flex flex-col flex-grow pb-20">
             
             <div class="mb-4">
@@ -186,176 +80,260 @@
                 <p class="text-white/50 text-lg">A selection of my best algorithms, applications, and experiments.</p>
             </div>
 
-            <!-- Filters Section -->
+            <!-- FILTERS -->
             <div class="flex flex-col xl:flex-row items-center gap-4 mb-6 w-full mt-6">
-                <!-- Search Bar -->
                 <div class="relative w-full xl:w-auto flex-grow flex-shrink">
-                    <input type="text" placeholder="Search projects..." class="liquid-glass glass-edge w-full rounded-full py-3 px-6 text-white bg-transparent outline-none placeholder-white/40 border border-white/10 transition-all">
+                    <input type="text" id="searchInput" placeholder="Search projects..." class="liquid-glass glass-edge w-full rounded-full py-3 px-6 text-white bg-transparent outline-none placeholder-white/40 border border-white/10 transition-all focus:border-white/30">
                     <svg class="absolute right-5 top-1/2 -translate-y-1/2 w-5 h-5 text-white/40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                 </div>
                 
-                <!-- Filter Buttons -->
                 <div class="flex gap-3 w-full xl:w-auto overflow-x-auto no-scrollbar pb-2 xl:pb-0">
-                    <button class="filter-btn liquid-glass glass-edge px-6 py-3 rounded-full text-sm font-semibold hover:bg-white/10 transition-all whitespace-nowrap active-filter">Featured</button>
-                    <button class="filter-btn liquid-glass glass-edge px-6 py-3 rounded-full text-sm font-semibold text-white/60 hover:bg-white/10 hover:text-white transition-all whitespace-nowrap">All</button>
-                    <button id="tags-btn" class="liquid-glass glass-edge px-6 py-3 rounded-full text-sm font-semibold text-white/60 flex items-center gap-2 hover:bg-white/10 hover:text-white transition-all whitespace-nowrap">
+                    <button id="btn-featured" class="filter-btn liquid-glass glass-edge px-6 py-3 rounded-full text-sm font-semibold text-white/60 hover:bg-white/10 hover:text-white transition-all whitespace-nowrap">Featured</button>
+                    <button id="btn-all" class="filter-btn liquid-glass glass-edge px-6 py-3 rounded-full text-sm font-semibold hover:bg-white/10 transition-all whitespace-nowrap active-filter">All</button>
+                    <button id="btn-tags" class="liquid-glass glass-edge px-6 py-3 rounded-full text-sm font-semibold text-white/60 flex items-center gap-2 hover:bg-white/10 hover:text-white transition-all whitespace-nowrap">
                         Tags
                         <svg class="w-4 h-4 transition-transform" id="tags-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </button>
                 </div>
             </div>
 
-            <!-- Tags Panel (Collapsible) -->
-            <div id="tags-panel" class="hidden liquid-glass glass-edge rounded-2xl p-5 mb-8 w-full border border-white/10 transition-all duration-300 transform origin-top">
-                <div class="flex flex-wrap gap-2 md:gap-3">
-                    <span class="tag-pill px-4 py-2 rounded-full border border-white/10 bg-white/5 text-[13px] font-medium text-white/70 cursor-pointer hover:bg-white/10 hover:text-white">C-Family</span>
-                    <span class="tag-pill px-4 py-2 rounded-full border border-white/10 bg-white/5 text-[13px] font-medium text-white/70 cursor-pointer hover:bg-white/10 hover:text-white">Python</span>
-                    <span class="tag-pill px-4 py-2 rounded-full border border-white/10 bg-white/5 text-[13px] font-medium text-white/70 cursor-pointer hover:bg-white/10 hover:text-white">Machine Learning</span>
-                    <span class="tag-pill px-4 py-2 rounded-full border border-white/10 bg-white/5 text-[13px] font-medium text-white/70 cursor-pointer hover:bg-white/10 hover:text-white">Swift</span>
-                    <span class="tag-pill px-4 py-2 rounded-full border border-white/10 bg-white/5 text-[13px] font-medium text-white/70 cursor-pointer hover:bg-white/10 hover:text-white">Frontend</span>
-                    <span class="tag-pill px-4 py-2 rounded-full border border-white/10 bg-white/5 text-[13px] font-medium text-white/70 cursor-pointer hover:bg-white/10 hover:text-white">SQL</span>
+            <!-- TAGS PANEL -->
+            <div id="tags-panel" class="hidden liquid-glass glass-edge rounded-3xl p-6 md:p-8 mb-8 w-full border border-white/10 transition-all duration-300">
+                <div class="mb-5">
+                    <h3 class="text-white/40 text-xs font-bold uppercase tracking-wider mb-3">Areas</h3>
+                    <div class="flex flex-wrap gap-2" id="areas-container"></div>
+                </div>
+                <div>
+                    <h3 class="text-white/40 text-xs font-bold uppercase tracking-wider mb-3">Technologies</h3>
+                    <div class="flex flex-wrap gap-2" id="tech-container"></div>
                 </div>
             </div>
 
-            <!-- Projects Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 w-full" id="projects-grid">
-                
-                <!-- PLACEHOLDER CARD 1 -->
-                <div class="liquid-glass glass-edge rounded-2xl overflow-hidden flex flex-col group cursor-pointer border border-white/10 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_20px_40px_rgba(0,0,0,0.6)]">
-                    <!-- Project Image -->
-                    <div class="h-48 w-full bg-white/5 relative overflow-hidden flex items-center justify-center">
-                        <!-- Placeholder Gradient -->
-                        <div class="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent"></div>
-                        <span class="text-white/20 text-sm font-medium z-10">[ Preview Image Placeholder ]</span>
-                    </div>
-                    <!-- Content -->
-                    <div class="p-6 flex-grow flex flex-col">
-                        <h3 class="text-xl font-bold mb-2 text-white group-hover:text-white/90 transition-colors">Neural Time Series Forecaster</h3>
-                        <p class="text-[15px] text-white/50 mb-6 flex-grow leading-relaxed">Deep learning models utilizing LSTM architectures for advanced sequence forecasting and temporal data analysis.</p>
-                        <!-- Footer -->
-                        <div class="flex items-end justify-between mt-auto">
-                            <!-- Technologies Info -->
-                            <div class="flex flex-wrap gap-x-3 gap-y-1 text-[13px] font-semibold text-white/40">
-                                <span>Python</span>
-                                <span>TensorFlow</span>
-                                <span>Keras</span>
-                            </div>
-                            <!-- Arrow Icon -->
-                            <div class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center translate-x-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
-                                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- PLACEHOLDER CARD 2 -->
-                <div class="liquid-glass glass-edge rounded-2xl overflow-hidden flex flex-col group cursor-pointer border border-white/10 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_20px_40px_rgba(0,0,0,0.6)]">
-                    <!-- Project Image -->
-                    <div class="h-48 w-full bg-white/5 relative overflow-hidden flex items-center justify-center">
-                        <div class="absolute inset-0 bg-gradient-to-bl from-white/10 to-transparent"></div>
-                        <span class="text-white/20 text-sm font-medium z-10">[ Preview Image Placeholder ]</span>
-                    </div>
-                    <!-- Content -->
-                    <div class="p-6 flex-grow flex flex-col">
-                        <h3 class="text-xl font-bold mb-2 text-white group-hover:text-white/90 transition-colors">Portfolio Engine</h3>
-                        <p class="text-[15px] text-white/50 mb-6 flex-grow leading-relaxed">Complete modular portfolio infrastructure showcasing optimized workflows and dynamic component rendering.</p>
-                        <!-- Footer -->
-                        <div class="flex items-end justify-between mt-auto">
-                            <!-- Technologies Info -->
-                            <div class="flex flex-wrap gap-x-3 gap-y-1 text-[13px] font-semibold text-white/40">
-                                <span>HTML5</span>
-                                <span>Tailwind CSS</span>
-                                <span>JS</span>
-                            </div>
-                            <!-- Arrow Icon -->
-                            <div class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center translate-x-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
-                                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- PLACEHOLDER CARD 3 -->
-                <div class="liquid-glass glass-edge rounded-2xl overflow-hidden flex flex-col group cursor-pointer border border-white/10 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_20px_40px_rgba(0,0,0,0.6)]">
-                    <!-- Project Image -->
-                    <div class="h-48 w-full bg-white/5 relative overflow-hidden flex items-center justify-center">
-                        <div class="absolute inset-0 bg-gradient-to-tr from-white/10 to-transparent"></div>
-                        <span class="text-white/20 text-sm font-medium z-10">[ Preview Image Placeholder ]</span>
-                    </div>
-                    <!-- Content -->
-                    <div class="p-6 flex-grow flex flex-col">
-                        <h3 class="text-xl font-bold mb-2 text-white group-hover:text-white/90 transition-colors">Kinetic Guard</h3>
-                        <p class="text-[15px] text-white/50 mb-6 flex-grow leading-relaxed">Swift-based mobile utility focused on robust system state supervision and localized event handling.</p>
-                        <!-- Footer -->
-                        <div class="flex items-end justify-between mt-auto">
-                            <!-- Technologies Info -->
-                            <div class="flex flex-wrap gap-x-3 gap-y-1 text-[13px] font-semibold text-white/40">
-                                <span>Swift</span>
-                                <span>iOS SDK</span>
-                            </div>
-                            <!-- Arrow Icon -->
-                            <div class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center translate-x-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
-                                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+            <!-- PROJECTS GRID -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-7 w-full" id="projects-grid">
+                <!-- Renderizado por Javascript -->
+            </div>
+            
+            <!-- EMPTY STATE -->
+            <div id="empty-state" class="hidden flex-col items-center justify-center py-20 text-center w-full">
+                <svg class="w-16 h-16 text-white/10 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                <p class="text-white/50 text-lg">No projects match the selected filters.</p>
             </div>
         </main>
     </div>
 
-    <!-- Scripts for Interactivity -->
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
+        // --- DATA LAYER ---
+        const projects = [
+            { id: 1, title: 'C-PhysEngine', desc: 'Physics engine simulation utilizing core C structures and optimization capabilities.', areas: ['CS Projects'], techs: ['C-Family'], featured: true, url: 'https://github.com/AgentBooster/portfolio-projects/tree/main/CS_Projects_Py_CPP_Swift_SQL/c-family/c-physengine' },
+            { id: 2, title: 'Financial Tracker', desc: 'Command line tool and analytical app for tracking finances parsing structured data efficiently.', areas: ['CS Projects'], techs: ['Python'], featured: false, url: 'https://github.com/AgentBooster/portfolio-projects/tree/main/CS_Projects_Py_CPP_Swift_SQL/python/financial_tracker' },
+            { id: 3, title: 'Python Agent', desc: 'Intelligent script orchestrator exploring Python based autonomous agent capabilities.', areas: ['CS Projects', 'Agents/Automation'], techs: ['Python'], featured: false, url: 'https://github.com/AgentBooster/portfolio-projects/tree/main/CS_Projects_Py_CPP_Swift_SQL/python/python_agent' },
+            { id: 4, title: 'Portfolio Engine', desc: 'SQL infrastructure designed for high-performance portfolio data management and queries.', areas: ['CS Projects'], techs: ['SQL'], featured: false, url: 'https://github.com/AgentBooster/portfolio-projects/tree/main/CS_Projects_Py_CPP_Swift_SQL/sql/portfolio_engine' },
+            { id: 5, title: 'KineticGuard', desc: 'Swift-based mobile utility focused on robust system state supervision.', areas: ['CS Projects'], techs: ['Swift'], featured: true, url: 'https://github.com/AgentBooster/portfolio-projects/tree/main/CS_Projects_Py_CPP_Swift_SQL/swift/KineticGuard' },
+            { id: 6, title: 'LittleLemonSuite', desc: 'iOS application suite focusing on intuitive interfaces and component reusability.', areas: ['CS Projects'], techs: ['Swift'], featured: false, url: 'https://github.com/AgentBooster/portfolio-projects/tree/main/CS_Projects_Py_CPP_Swift_SQL/swift/LittleLemonSuite' },
+            { id: 7, title: 'Neural Time Series Forecaster', desc: 'Deep learning models utilizing GRU/LSTM architectures for advanced sequence forecasting.', areas: ['Machine Learning'], techs: ['Python', 'TensorFlow', 'TypeScript'], featured: true, url: 'https://github.com/AgentBooster/portfolio-projects/tree/main/Machine_Learning_Deep_Learning/neural_time_series_forecaster_gru' },
+            { id: 8, title: 'Vision Image Classifier CNN', desc: 'Computer vision framework employing Convolutional Neural Networks for precise categorization.', areas: ['Machine Learning'], techs: ['Python', 'TensorFlow'], featured: true, url: 'https://github.com/AgentBooster/portfolio-projects/tree/main/Machine_Learning_Deep_Learning/vision_image_classifier_cnn' },
+            { id: 9, title: 'Estetia Page', desc: 'Modern responsive landing page leveraging raw semantic layouts and sleek transitions.', areas: ['Web Application'], techs: ['HTML/JS', 'TypeScript'], featured: false, url: 'https://github.com/AgentBooster/portfolio-projects/tree/main/Software_Frontend/estetia_page' },
+            { id: 10, title: 'Fisia Software', desc: 'Application software UI combining functional forms and specialized data presentation.', areas: ['Web Application'], techs: ['HTML/JS'], featured: false, url: 'https://github.com/AgentBooster/portfolio-projects/tree/main/Software_Frontend/fisia_software' },
+            { id: 11, title: 'Widget Web Agent', desc: 'Embeddable multi-agent frontend widget showcasing external dynamic reactivity.', areas: ['Agents/Automation'], techs: ['React/Vite', 'TypeScript'], featured: false, url: 'https://github.com/AgentBooster/portfolio-projects/tree/main/Widget_Web_Agent' },
+            { id: 12, title: 'n8n Automations', desc: 'Collection of modular JSON workflows integrating complex automated data pipelines.', areas: ['Agents/Automation'], techs: ['Automation (n8n)'], featured: false, url: 'https://github.com/AgentBooster/portfolio-projects/tree/main/n8n_JSON' },
+            { id: 13, title: 'Risolvia UI', desc: 'State of the art scalable frontend architecture crafted for commercial product platforms.', areas: ['Web Application'], techs: ['React/Vite', 'TypeScript'], featured: false, url: 'https://github.com/AgentBooster/portfolio-projects/tree/main/Software_Frontend/risolvia' },
+            { id: 14, title: 'AgentBooster Web', desc: 'Advanced multi-route commercial web application serving as the primary hub.', areas: ['Web Application'], techs: ['React/Vite', 'TypeScript'], featured: true, url: 'https://github.com/AgentBooster/portfolio-projects/tree/main/Software_Frontend/agentbooster' }
+        ];
+
+        // Ensure "All" sort alphabetic default
+        projects.sort((a,b) => a.title.localeCompare(b.title));
+
+        const SVG_ICONS = {
+            'Python': '<svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M14.25.18l.9.2.73.26.59.3.45.32.34.34.25.34.16.33.1.3.04.26.02.2-.01.13V8.5l-.05.63-.13.55-.21.46-.26.38-.3.31-.33.25-.35.19-.35.14-.33.1-.3.07-.26.04-.21.02H8.77l-.69.05-.59.14-.5.22-.41.27-.33.32-.27.35-.2.36-.15.37-.1.35-.07.32-.04.27-.02.21V13.06h-2.15l-.47-.03-.43-.1-.4-.15-.35-.21-.3-.26-.25-.3-.21-.35-.16-.39-.12-.41-.09-.44-.05-.45-.03-.46v-3.08l.05-.63.13-.55.21-.46.26-.38.3-.31.33-.25.35-.19.35-.14.33-.1.3-.07.26-.04.21-.02h.6v2.16l.03.46.09.45.14.42.21.37.28.31.34.24.41.17.47.1.53.03h2.15v-1.07l.03-.46.09-.45.14-.42.21-.37.28-.31.34-.24.41-.17.47-.1.53-.03h3.58l.68-.05.59-.14.5-.22.41-.27.33-.32.27-.35.2-.36.15-.37.1-.35.07-.32.04-.27.02-.21V3.24l-.16-.39-.12-.41-.09-.44-.05-.45-.03-.46h-3.58l-.68.05-.59.14-.5.22-.41.27-.33.32-.27.35-.2.36-.15.37-.1.35-.07.32-.04.27-.02.21zm-10.5 7.15c0 .32.26.58.58.58s.58-.26.58-.58-.26-.58-.58-.58-.58.26-.58.58zM9.75 23.82l-.9-.2-.73-.26-.59-.3-.45-.32-.34-.34-.25-.34-.16-.33-.1-.3-.04-.26-.02-.2.01-.13V15.5l.05-.63.13-.55.21-.46.26-.38.3-.31.33-.25.35-.19.35-.14.33-.1.3-.07.26-.04.21-.02h6.47l.69-.05.59-.14.5-.22.41-.27.33-.32.27-.35.2-.36.15-.37.1-.35.07-.32.04-.27.02-.21v-3.08h2.15l.47.03.43.1.4.15.35.21.3.26.25.3.21.35.16.39.12.41.09.44.05.45.03.46v3.08l-.05.63-.13.55-.21.46-.26.38-.3.31-.33.25-.35.19-.35.14-.33.1-.3.07-.26.04-.21.02h-.6v-2.16l-.03-.46-.09-.45-.14-.42-.21-.37-.28-.31-.34-.24-.41-.17-.47-.1-.53-.03H10.2l-.68.05-.59.14-.5.22-.41.27-.33.32-.27.35-.2.36-.15.37-.1.35-.07.32-.04.27-.02.21v5.33l.16.39.12.41.09.44.05.45.03.46h3.58l.68-.05.59-.14.5-.22.41-.27.33-.32.27-.35.2-.36.15-.37.1-.35.07-.32.04-.27.02-.21zM20.25 16.85c0-.32-.26-.58-.58-.58s-.58.26-.58.58.26.58.58.58.58-.26.58-.58z"/></svg>',
+            'Swift': '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21C6 19 3 13 3 13c3 4 8 5 11 3 0 0 1-5 7-7 0 0-4 7-9 12z"/></svg>',
+            'C-Family': '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-6l-2-6-2 6H2l5 4-2 6 5-4 5 4-2-6 5-4z"/></svg>',
+            'SQL': '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>',
+            'TypeScript': '<svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M1.125 0C.502 0 0 .502 0 1.125v21.75C0 23.498.502 24 1.125 24h21.75c.623 0 1.125-.502 1.125-1.125V1.125C24 .502 23.498 0 22.875 0H1.125zm16.553 19.388c-2.455 0-3.666-1.126-3.666-3.144 0-2.316 1.83-3.606 4.398-3.606.87 0 1.644.204 2.226.486l-.582 2.658c-.516-.294-1.182-.456-1.848-.456-.63 0-1.104.228-1.104.75 0 .576.816.636 1.956 1.05 1.584.582 2.502 1.536 2.502 2.928 0 1.956-1.632 3.252-4.14 3.252-1.02 0-2.004-.264-2.616-.6l.666-2.61c.642.342 1.398.582 2.232.582.726 0 1.176-.252 1.176-.78 0-.492-.474-.648-1.74-1.092zM10.875 11.25V23.25H7.725v-12H2.25V8.25H16.5v3H10.875z"/></svg>',
+            'HTML/JS': '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 18l6-6-6-6"/><path d="M8 6l-6 6 6 6"/></svg>',
+            'React/Vite': '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>',
+            'Automation (n8n)': '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>',
+            'TensorFlow': '<svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M11.238 2.368a1.595 1.595 0 0 1 1.524 0l8.03 4.636a1.595 1.595 0 0 1 .798 1.382v9.27a1.595 1.595 0 0 1-.798 1.38l-8.03 4.637a1.595 1.595 0 0 1-1.524 0l-8.03-4.637a1.595 1.595 0 0 1-.798-1.38v-9.271a1.595 1.595 0 0 1 .798-1.382l8.03-4.636h.001Zm3.336 4.908-2.574 1.486v10.038l2.574-1.486V7.276ZM9.426 7.276l2.574 1.486v10.038l-2.574-1.486V7.276Z"/></svg>',
+            'AreaDefault': '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>'
+        };
+
+        const uniqueAreas = Array.from(new Set(projects.flatMap(p => p.areas)));
+        const uniqueTechs = Array.from(new Set(projects.flatMap(p => p.techs)));
+        let activeTags = new Set();
+        let currentMode = 'ALL'; 
+
+        const grid = document.getElementById('projects-grid');
+        const emptyState = document.getElementById('empty-state');
+        const areasContainer = document.getElementById('areas-container');
+        const techContainer = document.getElementById('tech-container');
+
+        // --- INIT UI ---
+        function initTags() {
+            uniqueAreas.forEach(area => {
+                const btn = document.createElement('button');
+                btn.className = `tag-pill flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 text-[13px] font-medium text-white/70 hover:bg-white/10 hover:text-white`;
+                btn.innerHTML = `${SVG_ICONS['AreaDefault']} <span>${area}</span>`;
+                btn.onclick = () => toggleTag(area, btn);
+                areasContainer.appendChild(btn);
+            });
+
+            uniqueTechs.forEach(tech => {
+                const btn = document.createElement('button');
+                btn.className = `tag-pill flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 text-[13px] font-medium text-white/70 hover:bg-white/10 hover:text-white`;
+                const icon = SVG_ICONS[tech] || SVG_ICONS['AreaDefault'];
+                btn.innerHTML = `${icon} <span>${tech}</span>`;
+                btn.onclick = () => toggleTag(tech, btn);
+                techContainer.appendChild(btn);
+            });
+        }
+
+        function toggleTag(tag, element) {
+            if (activeTags.has(tag)) {
+                activeTags.delete(tag);
+                element.classList.remove('active');
+            } else {
+                activeTags.add(tag);
+                element.classList.add('active');
+            }
+            if (activeTags.size > 0) {
+                setFilterMode('TAGS');
+            } else {
+                setFilterMode('ALL');
+            }
+            applyFilters();
+        }
+
+        // --- RENDER LOGIC ---
+        function renderCards(filteredProjects) {
+            grid.innerHTML = '';
             
-            // --- 1. FILTER BUTTONS BEHAVIOR ---
-            const filterBtns = document.querySelectorAll('.filter-btn');
-            filterBtns.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    // Remove active styles from all
-                    filterBtns.forEach(b => {
-                        b.classList.remove('active-filter');
-                        b.classList.add('text-white/60');
-                    });
-                    // Set active style to clicked
-                    btn.classList.add('active-filter');
-                    btn.classList.remove('text-white/60');
+            if (filteredProjects.length === 0) {
+                grid.classList.add('hidden');
+                emptyState.classList.remove('hidden');
+                emptyState.classList.add('flex');
+                return;
+            }
+
+            grid.classList.remove('hidden');
+            emptyState.classList.add('hidden');
+            emptyState.classList.remove('flex');
+
+            filteredProjects.forEach(proj => {
+                const techsHtml = proj.techs.map(t => `<span class="bg-white/5 border border-white/10 px-2 py-1 rounded text-white/60">${t}</span>`).join('');
+                const areasHtml = proj.areas.map(a => `<span class="text-white/30 truncate ml-1 text-xs uppercase tracking-widest">${a}</span>`).join('<span class="text-white/10 mx-1">-</span>');
+
+                const cardHTML = `
+                <a href="${proj.url}" target="_blank" rel="noopener noreferrer" class="liquid-glass glass-edge rounded-2xl overflow-hidden flex flex-col group cursor-pointer border border-white/10 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_20px_40px_rgba(0,0,0,0.6)]">
+                    <div class="h-48 w-full bg-[#0a0a0a] relative overflow-hidden flex items-center justify-center border-b border-white/5">
+                        <div class="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent"></div>
+                        <!-- Placeholder stylized image replacement -->
+                        <div class="z-10 group-hover:scale-110 transition-transform duration-500 opacity-30 group-hover:opacity-60 text-white">
+                            <svg class="w-16 h-16" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col">
+                        <div class="mb-4">${areasHtml}</div>
+                        <h3 class="text-xl font-bold mb-2 text-white group-hover:text-white/90 transition-colors drop-shadow-md">${proj.title}</h3>
+                        <p class="text-[15px] text-white/50 mb-8 flex-grow leading-relaxed">${proj.desc}</p>
+                        
+                        <div class="flex items-end justify-between mt-auto">
+                            <div class="flex flex-wrap gap-2 text-[12px] font-semibold text-white/40">
+                                ${techsHtml}
+                            </div>
+                            <div class="w-9 h-9 flex-shrink-0 rounded-full bg-white/10 flex items-center justify-center translate-x-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 border border-white/20">
+                                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M12 5l7 7-7 7"></path></svg>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                `;
+                grid.insertAdjacentHTML('beforeend', cardHTML);
+            });
+        }
+
+        // --- FILTERING ENGINE ---
+        function applyFilters() {
+            const query = document.getElementById('searchInput').value.toLowerCase().trim();
+            
+            let filtered = projects;
+
+            if (currentMode === 'FEATURED') {
+                filtered = filtered.filter(p => p.featured);
+            } else if (currentMode === 'TAGS' || activeTags.size > 0) {
+                filtered = filtered.filter(p => {
+                    const projectTags = [...p.areas, ...p.techs];
+                    // OR logic: shows project if it matches AT LEAST ONE selected tag
+                    return Array.from(activeTags).some(t => projectTags.includes(t));
                 });
-            });
+            }
 
-            // --- 2. TAGS MENU TOGGLE ---
-            const tagsBtn = document.getElementById('tags-btn');
-            const tagsPanel = document.getElementById('tags-panel');
-            const tagsIcon = document.getElementById('tags-icon');
+            if (query) {
+                filtered = filtered.filter(p => p.title.toLowerCase().includes(query) || p.desc.toLowerCase().includes(query));
+            }
 
-            tagsBtn.addEventListener('click', () => {
-                const isHidden = tagsPanel.classList.contains('hidden');
-                if (isHidden) {
-                    tagsPanel.classList.remove('hidden');
-                    // Small delay to allow display flex to apply before opacity fades in (optional smooth effect)
-                    setTimeout(() => {
-                        tagsPanel.classList.add('opacity-100', 'scale-y-100');
-                    }, 10);
-                    tagsBtn.classList.add('active-filter');
-                    tagsBtn.classList.remove('text-white/60');
-                    tagsIcon.classList.add('rotate-180');
-                } else {
-                    tagsPanel.classList.add('hidden');
-                    tagsBtn.classList.remove('active-filter');
-                    tagsBtn.classList.add('text-white/60');
-                    tagsIcon.classList.remove('rotate-180');
-                }
-            });
+            renderCards(filtered);
+        }
 
-            // --- 3. TAG PILLS BEHAVIOR ---
-            const tagPills = document.querySelectorAll('.tag-pill');
-            tagPills.forEach(pill => {
-                pill.addEventListener('click', () => {
-                    pill.classList.toggle('active');
-                });
+        function setFilterMode(mode) {
+            currentMode = mode;
+            ['btn-featured', 'btn-all', 'btn-tags'].forEach(id => {
+                document.getElementById(id).classList.remove('active-filter');
+                document.getElementById(id).classList.add('text-white/60');
             });
+            let btnId = '';
+            if (mode === 'FEATURED') btnId = 'btn-featured';
+            if (mode === 'ALL') btnId = 'btn-all';
+            if (mode === 'TAGS') btnId = 'btn-tags';
+
+            if (btnId) {
+                document.getElementById(btnId).classList.add('active-filter');
+                document.getElementById(btnId).classList.remove('text-white/60');
+            }
+        }
+
+        // --- EVENT LISTENERS ---
+        document.getElementById('searchInput').addEventListener('input', applyFilters);
+        
+        document.getElementById('btn-all').addEventListener('click', () => {
+            activeTags.clear();
+            document.querySelectorAll('.tag-pill').forEach(el => el.classList.remove('active'));
+            setFilterMode('ALL');
+            applyFilters();
         });
+
+        document.getElementById('btn-featured').addEventListener('click', () => {
+            activeTags.clear();
+            document.querySelectorAll('.tag-pill').forEach(el => el.classList.remove('active'));
+            setFilterMode('FEATURED');
+            applyFilters();
+        });
+
+        const tagsBtn = document.getElementById('btn-tags');
+        const tagsPanel = document.getElementById('tags-panel');
+        const tagsIcon = document.getElementById('tags-icon');
+
+        tagsBtn.addEventListener('click', () => {
+            const isHidden = tagsPanel.classList.contains('hidden');
+            if (isHidden) {
+                tagsPanel.classList.remove('hidden');
+                tagsIcon.classList.add('rotate-180');
+                if (currentMode !== 'TAGS' && activeTags.size > 0) {
+                   setFilterMode('TAGS');
+                   applyFilters();
+                } else if(currentMode === 'ALL' && activeTags.size === 0) {
+                   setFilterMode('TAGS');
+                   // keep showing all if no tags selected yet
+                }
+            } else {
+                tagsPanel.classList.add('hidden');
+                tagsIcon.classList.remove('rotate-180');
+            }
+        });
+
+        // Bootstrap App
+        initTags();
+        applyFilters();
+
     </script>
 </body>
 </html>
