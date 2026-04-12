@@ -48,9 +48,30 @@
             -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); mask-composite: exclude; pointer-events: none;
         }
 
-        .nav-link { padding: 10px 20px; border-radius: 999px; transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); color: rgba(255, 255, 255, 0.5); font-size: 14px; font-weight: 600; }
-        @media (min-width: 768px) { .nav-link { padding: 12px 28px; font-size: 15px; } }
-        .nav-link:hover { color: white; background: rgba(255, 255, 255, 0.06); }
+        /* NAVEGACIÓN GLOBAL */
+        .nav-link {
+            padding: 8px 12px;
+            border-radius: 999px;
+            transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 13px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        @media (min-width: 480px) {
+            .nav-link {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .nav-link {
+                padding: 12px 28px;
+                font-size: 15px;
+            }
+        }.nav-link:hover { color: white; background: rgba(255, 255, 255, 0.06); }
         .nav-link.active { color: white; background: rgba(255, 255, 255, 0.15); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); }
         .no-scrollbar::-webkit-scrollbar { display: none; } .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
         
@@ -66,7 +87,8 @@
 
     <div class="relative z-10 w-full flex flex-col items-center px-4 py-8 md:py-12 min-h-screen">
         
-        <nav class="liquid-glass glass-edge px-3 py-2 md:py-2.5 rounded-full mb-12 flex space-x-1 md:space-x-1.5 items-center max-w-full overflow-x-auto no-scrollbar">
+        <!-- Barra de Navegación Global -->
+        <nav class="liquid-glass glass-edge px-1.5 py-1.5 md:px-3 md:py-2.5 rounded-full mb-12 md:mb-28 flex space-x-0.5 md:space-x-1.5 items-center justify-center max-w-[95vw]">
             <a href="../index.html" class="nav-link">Home</a>
             <a href="projects.html" class="nav-link active">Projects</a>
             <a href="education.html" class="nav-link">Education</a>
