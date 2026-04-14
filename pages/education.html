@@ -161,10 +161,518 @@
         </nav>
 
         <!-- Main Content (Education) -->
-        <main class="w-full max-w-6xl flex flex-col flex-grow items-center justify-center text-center pb-20">
-            <h1 class="text-4xl md:text-6xl font-bold tracking-tight mb-6">Education</h1>
-            <p class="text-white/50 text-xl">Work in Progress</p>
+        <main class="w-full max-w-[1000px] flex flex-col flex-grow items-center pb-20 px-2 sm:px-4 mt-2">
+            
+            <div class="w-full mb-4 md:mb-6 text-left">
+                <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-2">Education</h1>
+                <p class="text-white/50 text-lg">A comprehensive overview of my technical certifications and degrees.</p>
+            </div>
+            
+            <!-- CONTROLS & FILTERS -->
+            <div class="flex flex-wrap gap-3 mb-12 w-full justify-center md:justify-start items-center relative z-20">
+                
+                <!-- SELECT Theme -->
+                <div class="relative inline-flex items-center">
+                    <select id="filter-theme" onchange="runFilters()" class="liquid-glass glass-edge px-4 py-2 pr-9 rounded-full border border-white/10 bg-white/5 text-[13px] font-medium text-white/70 appearance-none cursor-pointer outline-none hover:bg-white/10 focus:ring-1 focus:ring-white/30 transition-colors max-w-[150px]">
+                        <option value="ALL" class="bg-black text-white/80">Theme</option>
+                    </select>
+                    <svg class="absolute right-3.5 w-3.5 h-3.5 pointer-events-none text-white/40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </div>
+
+                <!-- SELECT Modality -->
+                <div class="relative inline-flex items-center">
+                    <select id="filter-modality" onchange="runFilters()" class="liquid-glass glass-edge px-4 py-2 pr-9 rounded-full border border-white/10 bg-white/5 text-[13px] font-medium text-white/70 appearance-none cursor-pointer outline-none hover:bg-white/10 focus:ring-1 focus:ring-white/30 transition-colors max-w-[150px]">
+                        <option value="ALL" class="bg-black text-white/80">Modality</option>
+                    </select>
+                    <svg class="absolute right-3.5 w-3.5 h-3.5 pointer-events-none text-white/40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </div>
+
+                <!-- SELECT Focus -->
+                <div class="relative inline-flex items-center">
+                    <select id="filter-focus" onchange="runFilters()" class="liquid-glass glass-edge px-4 py-2 pr-9 rounded-full border border-white/10 bg-white/5 text-[13px] font-medium text-white/70 appearance-none cursor-pointer outline-none hover:bg-white/10 focus:ring-1 focus:ring-white/30 transition-colors max-w-[150px]">
+                        <option value="ALL" class="bg-black text-white/80">Focus</option>
+                    </select>
+                    <svg class="absolute right-3.5 w-3.5 h-3.5 pointer-events-none text-white/40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </div>
+
+                <!-- SELECT Status -->
+                <div class="relative inline-flex items-center">
+                    <select id="filter-status" onchange="runFilters()" class="liquid-glass glass-edge px-4 py-2 pr-9 rounded-full border border-white/10 bg-white/5 text-[13px] font-medium text-white/70 appearance-none cursor-pointer outline-none hover:bg-white/10 focus:ring-1 focus:ring-white/30 transition-colors max-w-[150px]">
+                        <option value="ALL" class="bg-black text-white/80">Status</option>
+                    </select>
+                    <svg class="absolute right-3.5 w-3.5 h-3.5 pointer-events-none text-white/40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </div>
+
+                <!-- TOGGLE Certificate -->
+                <label class="flex items-center gap-3 cursor-pointer liquid-glass glass-edge px-4 py-1.5 rounded-full md:ml-auto border border-white/10 bg-white/5 hover:bg-white/10 transition-colors">
+                    <span class="text-[13px] font-medium text-white/70 truncate max-w-[160px] sm:max-w-none">Show only with certificate</span>
+                    <div class="relative w-9 h-5 bg-white/10 rounded-full flex items-center shrink-0">
+                        <input type="checkbox" id="filter-cert" onchange="runFilters()" class="sr-only peer">
+                        <div class="w-4 h-4 bg-white/40 rounded-full transition-transform peer-checked:translate-x-4 peer-checked:bg-white/90 ml-0.5"></div>
+                    </div>
+                </label>
+            </div>
+
+            <!-- GRID/LIST CONTAINERS -->
+            <div id="education-grid" class="w-full flex flex-col gap-5 items-center pb-10"></div>
+            
+            <div id="empty-state" class="hidden flex-col items-center justify-center py-20 text-white/40 w-full">
+                <svg class="w-16 h-16 mb-4 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                <p class="text-lg">No programs match the selected filters.</p>
+            </div>
+
         </main>
+    </div>
+
+    <!-- LOGIC & RENDERING SCRIPT -->
+    <script>
+        // DATASET
+        const education = [
+            { 
+                id: 1, 
+                title: "Machine Learning Specialization", 
+                platform: "Coursera", 
+                instructor: "Andrew Ng (Stanford University, DeepLearning.AI)", 
+                modality: "Recorded", 
+                theme: "Machine Learning", 
+                focus: "Technical", 
+                status: "Completed", 
+                desc: "Foundational specialization covering supervised and unsupervised learning, neural networks, and practical machine learning workflows for real-world applications.",
+                hasCertificate: true, 
+                url: "https://www.coursera.org/account/accomplishments/specialization/certificate/S9M0OUGCO2X4", 
+                img: "../assets/education/Machine Learning Specialization.jpeg" 
+            },
+            { 
+                id: 2, 
+                title: "Deep Learning Specialization", 
+                platform: "Coursera", 
+                instructor: "Andrew Ng, Younes Bensouda Mourri, Kian Katanforoosh (DeepLearning.AI)", 
+                modality: "Recorded", 
+                theme: "Deep Learning", 
+                focus: "Technical", 
+                status: "Completed", 
+                desc: "Foundational specialization covering neural networks, convolutional and sequence models, hyperparameter tuning, and practical strategies for building deep learning systems.",
+                hasCertificate: true, 
+                url: "https://www.coursera.org/account/accomplishments/specialization/certificate/ZS38XRFFRZCZ", 
+                img: "../assets/education/Deep Learning Specialization.jpeg" 
+            },
+            { 
+                id: 3, 
+                title: "Machine Learning in Production", 
+                platform: "Coursera", 
+                instructor: "Andrew Ng (DeepLearning.AI)", 
+                modality: "Recorded", 
+                theme: "Machine Learning", 
+                focus: "Technical", 
+                status: "Completed", 
+                desc: "Course focused on designing, deploying, and maintaining production ML systems, including project scoping, data pipelines, model baselines, error analysis, and concept drift handling.",
+                hasCertificate: true, 
+                url: "https://www.coursera.org/account/accomplishments/certificate/5L7XWA5G5HVV", 
+                img: "../assets/education/Machine Learning in Production.jpeg" 
+            },
+            { 
+                id: 4, 
+                title: "Machine Learning on Google Cloud Specialization", 
+                platform: "Coursera", 
+                instructor: "Google Cloud Training (Google Cloud)", 
+                modality: "Recorded", 
+                theme: "Cloud Computing", 
+                focus: "Technical", 
+                status: "Completed", 
+                desc: "Specialization focused on building end-to-end machine learning workflows on Google Cloud, including Vertex AI, data-to-AI tooling, generative AI options, and hands-on cloud labs.",
+                hasCertificate: true, 
+                url: "https://www.coursera.org/account/accomplishments/specialization/certificate/GWUG336N1Z94", 
+                img: "../assets/education/Machine Learning on Google Cloud Specialization.jpeg" 
+            },
+            { 
+                id: 5, 
+                title: "Advanced Machine Learning on Google Cloud", 
+                platform: "Coursera", 
+                instructor: "Google Cloud Training (Google Cloud)", 
+                modality: "Recorded", 
+                theme: "Cloud Computing", 
+                focus: "Technical", 
+                status: "Completed", 
+                desc: "Advanced specialization focused on building scalable, production-ready ML systems on Google Cloud, covering structured data, computer vision, NLP, time series, recommendation systems, and hands-on labs.",
+                hasCertificate: true, 
+                url: "https://www.coursera.org/account/accomplishments/specialization/certificate/MYX8XXGJGWK3", 
+                img: "../assets/education/Advanced Machine Learning on Google Cloud.jpeg" 
+            },
+            { 
+                id: 6, 
+                title: "Meta iOS UI Development", 
+                platform: "Coursera", 
+                instructor: "Anis Koubaa, Taught By Meta Staff (Meta)", 
+                modality: "Recorded", 
+                theme: "iOS Development", 
+                focus: "Technical", 
+                status: "Completed", 
+                desc: "Specialization focused on building iOS user interfaces with Swift, UIKit, and SwiftUI, covering core programming concepts, interface design, and hands-on mobile app development.",
+                hasCertificate: true, 
+                url: "https://www.coursera.org/account/accomplishments/specialization/certificate/F4SE2P7OHTNS", 
+                img: "../assets/education/Meta iOS UI Development.jpeg" 
+            },
+            { 
+                id: 7, 
+                title: "IBM Machine Learning", 
+                platform: "Coursera", 
+                instructor: "Xintong Li, Joseph Santarcangelo, Mark J. Grover (IBM)", 
+                modality: "Recorded", 
+                theme: "Machine Learning", 
+                focus: "Technical", 
+                status: "Completed", 
+                desc: "Specialization focused on practical machine learning with Python, covering data preparation, supervised and unsupervised learning, regression, classification, clustering, and hands-on projects with industry tools.",
+                hasCertificate: true, 
+                url: "https://www.coursera.org/account/accomplishments/specialization/certificate/QE6ULCHQT6T6", 
+                img: "../assets/education/IBM Machine Learning.jpeg" 
+            },
+            { 
+                id: 8, 
+                title: "AWS Cloud Solutions Architect", 
+                platform: "Coursera", 
+                instructor: "Amazon Web Services (AWS)", 
+                modality: "Recorded", 
+                theme: "Cloud Computing", 
+                focus: "Technical", 
+                status: "Completed", 
+                desc: "Professional certificate focused on AWS cloud architecture, covering core services, architectural design, security, networking, data lakes, and preparation for the AWS Certified Solutions Architect - Associate exam.",
+                hasCertificate: true, 
+                url: "https://www.coursera.org/account/accomplishments/specialization/certificate/5S455WOTUURW", 
+                img: "../assets/education/AWS Cloud Solutions Architect.jpeg" 
+            },
+            { 
+                id: 9, 
+                title: "Strengthen Your Business Savvy Specialization", 
+                platform: "Coursera", 
+                instructor: "Harvard Business Review (HBR)", 
+                modality: "Recorded", 
+                theme: "Business", 
+                focus: "Business", 
+                status: "Completed", 
+                desc: "Specialization focused on core business skills for leaders, covering decision-making, budgeting, strategy, and practical business judgment in modern organizations.",
+                hasCertificate: true, 
+                url: "https://www.coursera.org/account/accomplishments/specialization/certificate/PDRL0DJN9YE7", 
+                img: "../assets/education/Strengthen Your Business Savvy Specialization.jpeg" 
+            },
+            { 
+                id: 10, 
+                title: "Boost Your Leadership Impact Specialization", 
+                platform: "Coursera", 
+                instructor: "Harvard Business Review (HBR)", 
+                modality: "Recorded", 
+                theme: "Leadership", 
+                focus: "Professional", 
+                status: "Completed", 
+                desc: "Specialization focused on core leadership skills, including people management, conflict handling, effective communication, and influence across teams and organizations.",
+                hasCertificate: true, 
+                url: "https://www.coursera.org/account/accomplishments/specialization/certificate/COWCCXZDLSBD", 
+                img: "../assets/education/Boost Your Leadership Impact Specialization.jpeg" 
+            },
+            { 
+                id: 11, 
+                title: "IBM IT Support", 
+                platform: "Coursera", 
+                instructor: "IBM Skills Network Team (IBM)", 
+                modality: "Recorded", 
+                theme: "IT Support", 
+                focus: "Technical", 
+                status: "Completed", 
+                desc: "Professional certificate focused on IT fundamentals, hardware and software setup, troubleshooting, networking, cybersecurity, cloud computing, and customer support workflows for entry-level IT roles.",
+                hasCertificate: true, 
+                url: "https://www.coursera.org/account/accomplishments/specialization/certificate/UDHZSS5CH3AB", 
+                img: "../assets/education/IBM IT Support.jpeg" 
+            },
+            { 
+                id: 12, 
+                title: "IBM Data Science", 
+                platform: "Coursera", 
+                instructor: "IBM Skills Network Team (IBM)", 
+                modality: "Recorded", 
+                theme: "Data Science", 
+                focus: "Technical", 
+                status: "Completed", 
+                desc: "Professional certificate focused on the end-to-end data science workflow, covering Python, SQL, data analysis, visualization, machine learning, and hands-on projects with industry tools.",
+                hasCertificate: true, 
+                url: "https://www.coursera.org/account/accomplishments/specialization/certificate/3HEI54UWJKY6", 
+                img: "../assets/education/IBM Data Science.jpeg" 
+            },
+            { 
+                id: 13, 
+                title: "IBM Full Stack Software Developer", 
+                platform: "Coursera", 
+                instructor: "IBM Skills Network Team (IBM)", 
+                modality: "Recorded", 
+                theme: "Full-Stack Development", 
+                focus: "Technical", 
+                status: "Completed", 
+                desc: "Professional certificate focused on full-stack and cloud-native development, covering front-end and back-end technologies, Python, JavaScript, React, Node.js, databases, APIs, Docker, Kubernetes, and deployment workflows.",
+                hasCertificate: true, 
+                url: "https://www.coursera.org/account/accomplishments/specialization/certificate/3M3KYUTTN0KW", 
+                img: "../assets/education/IBM Full Stack Software Developer.jpeg" 
+            },
+            { 
+                id: 14, 
+                title: "Microsoft Full-Stack Developer", 
+                platform: "Coursera", 
+                instructor: "Microsoft (Microsoft)", 
+                modality: "Recorded", 
+                theme: "Full-Stack Development", 
+                focus: "Technical", 
+                status: "Completed", 
+                desc: "Professional certificate focused on end-to-end web application development, covering front-end and back-end skills, databases, APIs, .NET, cloud deployment, CI/CD, and AI-assisted workflows with Microsoft Copilot.",
+                hasCertificate: true, 
+                url: "https://www.coursera.org/account/accomplishments/specialization/certificate/LUXQNC82O12A", 
+                img: "../assets/education/Microsoft Full-Stack Developer.jpeg" 
+            },
+            { 
+                id: 15, 
+                title: "Google Advanced Data Analytics", 
+                platform: "Coursera", 
+                instructor: "Google Career Certificates (Google)", 
+                modality: "Recorded", 
+                theme: "Data Analytics", 
+                focus: "Technical", 
+                status: "Completed", 
+                desc: "Professional certificate focused on advanced data analytics, covering statistical analysis, Python, regression models, machine learning, predictive modeling, and experimental design for data-driven decision-making.",
+                hasCertificate: true, 
+                url: "https://www.coursera.org/account/accomplishments/specialization/certificate/56YWE4L9S404", 
+                img: "../assets/education/Google Advanced Data Analytics.jpeg" 
+            },
+            { 
+                id: 16, 
+                title: "Science of Exercise", 
+                platform: "Coursera", 
+                instructor: "Robert Mazzeo, Ph.D. (University of Colorado Boulder)", 
+                modality: "Recorded", 
+                theme: "Exercise Science", 
+                focus: "Technical", 
+                status: "Completed", 
+                desc: "Course focused on exercise physiology, covering how the body responds to physical stress, energy metabolism, nutrition, fatigue, performance-enhancing drugs, and the health benefits of exercise.",
+                hasCertificate: true, 
+                url: "https://www.coursera.org/account/accomplishments/certificate/173C631S8C2R", 
+                img: "../assets/education/Science of Exercise.jpeg" 
+            },
+            { 
+                id: 17, 
+                title: "CS50's Introduction to Artificial Intelligence with Python", 
+                platform: "Harvard", 
+                instructor: "David J. Malan, Brian Yu (Harvard University)", 
+                modality: "Recorded", 
+                theme: "Artificial Intelligence", 
+                focus: "Technical", 
+                status: "Completed", 
+                desc: "University course focused on the foundations of artificial intelligence with Python, covering graph search, classification, optimization, reinforcement learning, neural networks, and hands-on AI projects.",
+                hasCertificate: true, 
+                url: "https://cs50.harvard.edu/certificates/7207ccad-dd78-4a05-aa1e-be710aafc843", 
+                img: "../assets/education/CS50's Introduction to Artificial Intelligence with Python.jpeg" 
+            },
+            { 
+                id: 18, 
+                title: "CS50's Introduction to Programming with Python", 
+                platform: "Harvard", 
+                instructor: "David J. Malan (Harvard University)", 
+                modality: "Recorded", 
+                theme: "Python Programming", 
+                focus: "Technical", 
+                status: "Completed", 
+                desc: "University course focused on Python programming fundamentals, covering functions, variables, conditionals, loops, exceptions, unit testing, file I/O, regular expressions, object-oriented programming, and practical problem-solving.",
+                hasCertificate: true, 
+                url: "https://cs50.harvard.edu/certificates/2e688a37-417b-4471-ad3f-68669f43431c", 
+                img: "../assets/education/CS50's Introduction to Programming with Python.jpeg" 
+            },
+            { 
+                id: 19, 
+                title: "CS50's Introduction to Databases with SQL", 
+                platform: "Harvard", 
+                instructor: "David J. Malan, Carter Zenke (Harvard University)", 
+                modality: "Recorded", 
+                theme: "Databases", 
+                focus: "Technical", 
+                status: "Completed", 
+                desc: "University course focused on relational databases and SQL, covering data modeling, normalization, joins, constraints, indexing, views, transactions, and database integration with other programming languages.",
+                hasCertificate: true, 
+                url: "https://cs50.harvard.edu/certificates/c0f76ac5-ab62-4a35-80fd-66c9ac2dc8fe", 
+                img: "../assets/education/CS50's Introduction to Databases with SQL.jpeg" 
+            },
+            { 
+                id: 20, 
+                title: "CS50's Introduction to Computer Science", 
+                platform: "Harvard", 
+                instructor: "David J. Malan, Doug Lloyd, Brian Yu (Harvard University)", 
+                modality: "Recorded", 
+                theme: "Computer Science", 
+                focus: "Technical", 
+                status: "Completed", 
+                desc: "University course focused on core computer science and programming fundamentals, covering computational thinking, algorithms, data structures, abstraction, security, software engineering, and hands-on problem solving across multiple languages.",
+                hasCertificate: true, 
+                url: "https://cs50.harvard.edu/certificates/a2fc170c-3e07-46d7-88ed-2b800c22c756", 
+                img: "../assets/education/CS50's Introduction to Computer Science.jpeg" 
+            },
+            { 
+                id: 21, 
+                title: "IA Heroes", 
+                platform: "Learning Heroes", 
+                instructor: "Javier Sáez, Arnau Ramió (Learning Heroes)", 
+                modality: "Live Sessions", 
+                theme: "Artificial Intelligence", 
+                focus: "Business", 
+                hasCertificate: false, 
+                status: "Completed", 
+                desc: "Live training in applied artificial intelligence, focused on AI fundamentals, prompt engineering, agent creation, app development, process automation, audiovisual production, and digital content generation. This training also supported the creation of an LLC, co-founded with a partner, focused on AI implementation, process optimization, and agent-based automation for business use cases.",
+                url: "", 
+                img: "../assets/education/IA Heroes.jpeg" 
+            }
+        ];
+
+        // DOM References
+        const grid = document.getElementById('education-grid');
+        const emptyState = document.getElementById('empty-state');
+        const fTheme = document.getElementById('filter-theme');
+        const fModality = document.getElementById('filter-modality');
+        const fFocus = document.getElementById('filter-focus');
+        const fStatus = document.getElementById('filter-status');
+        const fCert = document.getElementById('filter-cert');
+
+        // Extract unique categories for select menus
+        function populateSelect(selectEl, key) {
+            const uniqueVals = Array.from(new Set(education.map(e => e[key]).filter(v => v)));
+            uniqueVals.forEach(val => {
+                const opt = document.createElement('option');
+                opt.value = val;
+                opt.textContent = val;
+                opt.className = 'bg-black text-white/80';
+                selectEl.appendChild(opt);
+            });
+        }
+
+        function initData() {
+            populateSelect(fTheme, 'theme');
+            populateSelect(fModality, 'modality');
+            populateSelect(fFocus, 'focus');
+            populateSelect(fStatus, 'status');
+            runFilters();
+        }
+
+        // Filter Engine
+        function runFilters() {
+            const vTheme = fTheme.value;
+            const vModality = fModality.value;
+            const vFocus = fFocus.value;
+            const vStatus = fStatus.value;
+            const needsCert = fCert.checked;
+
+            const filtered = education.filter(e => {
+                if (vTheme !== 'ALL' && e.theme !== vTheme) return false;
+                if (vModality !== 'ALL' && e.modality !== vModality) return false;
+                if (vFocus !== 'ALL' && e.focus !== vFocus) return false;
+                if (vStatus !== 'ALL' && e.status !== vStatus) return false;
+                if (needsCert && !e.hasCertificate) return false;
+                return true;
+            });
+
+            renderCards(filtered);
+        }
+
+        // Rendering
+        function renderCards(data) {
+            grid.innerHTML = '';
+            
+            if (data.length === 0) {
+                grid.classList.add('hidden');
+                emptyState.classList.remove('hidden');
+                emptyState.classList.add('flex');
+                return;
+            }
+
+            grid.classList.remove('hidden');
+            emptyState.classList.add('hidden');
+            emptyState.classList.remove('flex');
+
+            data.forEach(item => {
+                const hasInstructor = item.instructor && item.instructor.trim() !== "";
+                const certHtml = item.hasCertificate 
+                    ? `<div class="shrink-0 flex items-center justify-center gap-1.5 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full border border-green-500/20 bg-green-500/10 text-green-400 text-[11px] sm:text-[12px] font-semibold tracking-wide transition-colors group-hover:bg-green-500/15">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        Certificate: Yes
+                       </div>`
+                    : `<div class="shrink-0 flex items-center justify-center gap-1.5 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full border border-white/10 bg-white/5 text-white/40 text-[11px] sm:text-[12px] font-semibold tracking-wide">
+                        Certificate: No
+                       </div>`;
+
+                const viewCertBtn = item.url 
+                    ? `<div class="text-[11px] sm:text-[12px] font-bold text-white/30 group-hover:text-white/90 transition-colors flex items-center gap-1.5 mt-2 md:mt-0">
+                        View Certificate
+                        <svg class="w-3.5 h-3.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                       </div>`
+                    : `<div class="text-[11px] sm:text-[12px] font-bold text-white/30 group-hover:text-white/90 transition-colors flex items-center gap-1.5 mt-2 md:mt-0 expand-btn">
+                        More Details
+                        <svg class="w-4 h-4 opacity-70 transition-transform duration-300 expand-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7"></path></svg>
+                       </div>`;
+
+                const meta = [item.platform, item.theme, item.focus, item.status]
+                            .filter(Boolean)
+                            .join('<span class="text-white/20 mx-1.5">|</span>');
+                
+                const metaInstructor = hasInstructor 
+                    ? `<div class="text-[12px] text-white/50 mb-1">Instructor: <span class="text-white/70">${item.instructor}</span></div>` 
+                    : '';
+
+                const WrapperTag = item.url ? 'a' : 'div';
+                const anchorAttrs = item.url ? `href="${item.url}" target="_blank" rel="noopener noreferrer"` : `onclick="toggleExpand(this)"`;
+                const baseClasses = "liquid-glass glass-edge rounded-3xl p-4 sm:p-5 flex flex-col md:flex-row items-center md:items-stretch gap-4 sm:gap-6 w-full group border border-white/10 transition-all duration-300 bg-white/[0.01]";
+                const hoverClasses = "cursor-pointer hover:-translate-y-1 hover:shadow-[0_15px_35px_rgba(0,0,0,0.5)] hover:bg-white/[0.03]";
+
+                const cardHTML = `
+                <${WrapperTag} ${anchorAttrs} class="${baseClasses} ${hoverClasses}">
+                    
+                    <!-- Thumbnail -->
+                    <div class="w-full md:w-[12rem] h-[10rem] md:h-[8.5rem] shrink-0 self-center md:self-start rounded-xl bg-black/40 border border-white/5 overflow-hidden flex items-center justify-center relative shadow-inner">
+                        <img src="${item.img}" alt="${item.title}" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-300" onerror="this.src=''; this.parentElement.innerHTML='<svg class=\\'w-8 h-8 text-white/20\\' fill=\\'none\\' stroke=\\'currentColor\\' viewBox=\\'0 0 24 24\\'><path stroke-linecap=\\'round\\' stroke-linejoin=\\'round\\' stroke-width=\\'1\\' d=\\'M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253\\\'></path></svg>';" />
+                    </div>
+                    
+                    <!-- Info Center -->
+                    <div class="flex-grow min-w-0 pr-0 md:pr-4 w-full flex flex-col justify-center">
+                        <h3 class="text-base sm:text-lg font-bold text-white/90 group-hover:text-white mb-1.5 leading-snug drop-shadow-md">${item.title}</h3>
+                        ${metaInstructor}
+                        <div class="text-white/50 text-[12px] sm:text-[13px] tracking-wide font-medium flex flex-wrap gap-y-1 mb-2">
+                            ${meta}
+                        </div>
+                        <p class="desc-text text-white/30 text-[12px] line-clamp-2 leading-relaxed mt-1 transition-all duration-300">${item.desc}</p>
+                    </div>
+
+                    <!-- Actions Right -->
+                    <div class="shrink-0 flex flex-row md:flex-col items-center md:items-end justify-between md:self-stretch w-full md:w-auto mt-2 md:mt-0 py-1">
+                        ${certHtml}
+                        ${viewCertBtn}
+                    </div>
+                </${WrapperTag}>
+
+                `;
+                grid.insertAdjacentHTML('beforeend', cardHTML);
+            });
+        }
+
+        // Initialize Call
+        document.addEventListener('DOMContentLoaded', initData);
+
+        // Card Accordion Logic
+        window.toggleExpand = function(el) {
+            const desc = el.querySelector('.desc-text');
+            const icon = el.querySelector('.expand-icon');
+            if (desc) {
+                if (desc.classList.contains('line-clamp-2')) {
+                    desc.classList.remove('line-clamp-2');
+                    if (icon) icon.style.transform = 'rotate(180deg)';
+                    el.classList.remove('hover:-translate-y-1');
+                } else {
+                    desc.classList.add('line-clamp-2');
+                    if (icon) icon.style.transform = 'rotate(0deg)';
+                    el.classList.add('hover:-translate-y-1');
+                }
+            }
+        };
+
+    </script>
     </div>
 </body>
 </html>
