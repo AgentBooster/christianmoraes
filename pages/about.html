@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About - Christian Moraes</title>
+    <meta name="description" content="Beyond the job — the values, discipline, and real activities that define who I am.">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-black: #000000;
             --glass-border: rgba(255, 255, 255, 0.12);
-            --glass-bg: rgba(255, 255, 255, 0.02);
         }
 
         body {
@@ -23,7 +23,7 @@
             min-height: 100vh;
         }
 
-        /* FONDO - ESCENA DE ILUMINACIÓN */
+        /* BACKGROUND */
         .background-container {
             position: fixed;
             inset: 0;
@@ -42,9 +42,7 @@
             aspect-ratio: 1/1;
             border-radius: 50%;
             border: 48px solid rgba(255, 255, 255, 0.5);
-            box-shadow: 
-                0 0 100px rgba(255, 255, 255, 0.3), 
-                inset 0 0 80px rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 100px rgba(255, 255, 255, 0.3), inset 0 0 80px rgba(255, 255, 255, 0.2);
             filter: blur(55px);
             opacity: 0.85;
             pointer-events: none;
@@ -61,25 +59,19 @@
             bottom: -250px;
             width: 100%;
             height: 500px;
-            background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.12) 0%, transparent 70%);
+            background: radial-gradient(ellipse at center, rgba(255,255,255,0.12) 0%, transparent 70%);
             filter: blur(120px);
             pointer-events: none;
         }
 
-        /* EFECTO LIQUID GLASS */
+        /* LIQUID GLASS */
         .liquid-glass {
-            background: linear-gradient(
-                135deg,
-                rgba(255, 255, 255, 0.08),
-                rgba(255, 255, 255, 0.02)
-            );
+            background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
             backdrop-filter: blur(55px) saturate(240%);
             -webkit-backdrop-filter: blur(55px) saturate(240%);
-            border: 1px solid rgba(255, 255, 255, 0.18);
+            border: 1px solid rgba(255,255,255,0.18);
             position: relative;
-            box-shadow: 
-                0 24px 50px rgba(0, 0, 0, 0.6),
-                inset 0 0 14px rgba(255, 255, 255, 0.08);
+            box-shadow: 0 24px 50px rgba(0,0,0,0.6), inset 0 0 14px rgba(255,255,255,0.08);
         }
 
         .glass-edge::after {
@@ -88,53 +80,335 @@
             inset: -1px;
             border-radius: inherit;
             padding: 1px;
-            background: linear-gradient(
-                145deg, 
-                rgba(255, 255, 255, 0.6) 0%, 
-                rgba(255, 255, 255, 0) 40%, 
-                rgba(255, 255, 255, 0) 60%, 
-                rgba(255, 255, 255, 0.25) 100%
-            );
+            background: linear-gradient(145deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0) 40%, rgba(255,255,255,0) 60%, rgba(255,255,255,0.25) 100%);
             -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
             mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
             mask-composite: exclude;
             pointer-events: none;
         }
 
-        /* NAVEGACIÓN GLOBAL */
+        /* NAV */
         .nav-link {
             padding: 8px 12px;
             border-radius: 999px;
             transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
-            color: rgba(255, 255, 255, 0.5);
+            color: rgba(255,255,255,0.5);
             font-size: 13px;
             font-weight: 600;
             white-space: nowrap;
         }
 
-        @media (min-width: 480px) {
-            .nav-link {
-                padding: 10px 20px;
-                font-size: 14px;
-            }
+        @media (min-width: 480px) { .nav-link { padding: 10px 20px; font-size: 14px; } }
+        @media (min-width: 768px) { .nav-link { padding: 12px 28px; font-size: 15px; } }
+
+        .nav-link:hover { color: white; background: rgba(255,255,255,0.06); }
+        .nav-link.active { color: white; background: rgba(255,255,255,0.15); box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+
+        /* VALUES BLOCK */
+        .values-block {
+            background: linear-gradient(145deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.015) 100%);
+            backdrop-filter: blur(55px) saturate(200%);
+            -webkit-backdrop-filter: blur(55px) saturate(200%);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 24px;
+            padding: 36px 40px;
+            box-shadow: 0 20px 48px rgba(0,0,0,0.5), inset 0 0 12px rgba(255,255,255,0.05);
+            position: relative;
         }
 
-        @media (min-width: 768px) {
-            .nav-link {
-                padding: 12px 28px;
-                font-size: 15px;
-            }
+        .values-block::after {
+            content: "";
+            position: absolute;
+            inset: -1px;
+            border-radius: inherit;
+            padding: 1px;
+            background: linear-gradient(145deg, rgba(255,255,255,0.45) 0%, rgba(255,255,255,0) 40%, rgba(255,255,255,0) 60%, rgba(255,255,255,0.18) 100%);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask-composite: exclude;
+            pointer-events: none;
         }
 
-        .nav-link:hover {
+        .values-label {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.3);
+            margin-bottom: 14px;
+        }
+
+        .values-text {
+            font-size: 0.88rem;
+            line-height: 1.8;
+            color: rgba(255,255,255,0.55);
+        }
+
+        .values-text p + p { margin-top: 14px; }
+
+        .values-text em {
+            font-style: normal;
+            color: rgba(255,255,255,0.82);
+            font-weight: 500;
+        }
+
+        /* INTEREST CARDS */
+        .interest-card {
+            position: relative;
+            border-radius: 24px;
+            overflow: hidden;
+            transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+                        box-shadow 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+            min-height: 260px;
+        }
+
+        .interest-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 28px 55px rgba(0,0,0,0.72);
+        }
+
+        /* Icon card */
+        .card-icon-bg {
+            background: linear-gradient(145deg, rgba(255,255,255,0.07) 0%, rgba(255,255,255,0.02) 100%);
+            backdrop-filter: blur(55px) saturate(200%);
+            -webkit-backdrop-filter: blur(55px) saturate(200%);
+            border: 1px solid rgba(255,255,255,0.13);
+            box-shadow: 0 20px 48px rgba(0,0,0,0.55), inset 0 0 12px rgba(255,255,255,0.06);
+        }
+
+        .card-icon-bg::after {
+            content: "";
+            position: absolute;
+            inset: -1px;
+            border-radius: inherit;
+            padding: 1px;
+            background: linear-gradient(145deg, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 40%, rgba(255,255,255,0) 60%, rgba(255,255,255,0.18) 100%);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+
+        /* Image card */
+        .card-img-bg {
+            border: 1px solid rgba(255,255,255,0.13);
+            box-shadow: 0 20px 48px rgba(0,0,0,0.55);
+        }
+
+        .card-photo {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .interest-card:hover .card-photo { transform: scale(1.05); }
+
+        .card-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.35) 55%, rgba(0,0,0,0.05) 100%);
+        }
+
+        /* Content layout */
+        .card-content {
+            position: relative;
+            z-index: 2;
+            padding: 28px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+
+        .card-icon-layout { justify-content: flex-start; }
+
+        .card-icon-wrap {
+            width: 46px;
+            height: 46px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 18px;
+            opacity: 0.5;
+        }
+
+        .card-icon-wrap svg {
+            width: 36px;
+            height: 36px;
+            stroke: white;
+            fill: none;
+            stroke-width: 1.4;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        /* PNG icon — loaded as background to block right-click save */
+        .card-png-icon {
+            width: 52px;
+            height: 52px;
+            margin-bottom: 18px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            opacity: 0.72;
+            pointer-events: none;
+            user-select: none;
+            -webkit-user-select: none;
+            filter: brightness(0) invert(1);
+            flex-shrink: 0;
+        }
+
+        .card-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: rgba(255,255,255,0.92);
+            margin-bottom: 8px;
+            letter-spacing: -0.01em;
+            line-height: 1.25;
+        }
+
+        .card-img-bg .card-title { font-size: 1.15rem; color: white; }
+
+        .card-desc {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.48);
+            line-height: 1.7;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 4;
+            transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+            max-height: calc(1.7em * 4);
+        }
+
+        .card-desc.expanded {
+            -webkit-line-clamp: unset;
+            max-height: 1400px;
+        }
+
+        .read-more-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            margin-top: 10px;
+            font-size: 11px;
+            font-weight: 600;
+            color: rgba(255,255,255,0.3);
+            background: none;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+            transition: color 0.25s;
+            width: fit-content;
+        }
+
+        .read-more-btn:hover { color: rgba(255,255,255,0.75); }
+
+        .read-more-btn svg {
+            width: 12px;
+            height: 12px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            flex-shrink: 0;
+        }
+
+        .read-more-btn.expanded svg { transform: rotate(180deg); }
+
+        .card-img-bg .card-desc { color: rgba(255,255,255,0.62); }
+
+        /* Audio Button */
+        .audio-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 6px 14px;
+            border-radius: 20px;
+            background: rgba(0, 0, 0, 0.45);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            z-index: 10;
             color: white;
-            background: rgba(255, 255, 255, 0.06);
+            transition: all 0.3s ease;
         }
 
-        .nav-link.active {
-            color: white;
-            background: rgba(255, 255, 255, 0.15);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        .audio-btn:hover {
+            background: rgba(0, 0, 0, 0.65);
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: scale(1.03);
+        }
+
+        .audio-btn .audio-text {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.03em;
+        }
+
+        .audio-btn svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+            stroke: currentColor;
+            stroke-width: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        .audio-btn .icon-pause, .audio-btn .icon-loader { display: none; }
+        
+        .audio-btn.playing .icon-play { display: none; }
+        .audio-btn.playing .icon-pause { display: block; }
+        .audio-btn.playing {
+            border-color: rgba(255, 255, 255, 0.6);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+        }
+
+        .audio-btn.loading .icon-play { display: none; }
+        .audio-btn.loading .icon-pause { display: none; }
+        .audio-btn.loading .icon-loader { display: block; animation: spin 1s linear infinite; }
+        .audio-btn.loading {
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+        
+        @keyframes spin {
+            100% { transform: rotate(360deg); }
+        }
+
+        /* External link badge */
+        .card-link-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            margin-top: 14px;
+            font-size: 11px;
+            font-weight: 600;
+            color: rgba(255,255,255,0.38);
+            text-decoration: none;
+            transition: color 0.25s;
+            width: fit-content;
+        }
+
+        .card-link-badge:hover { color: rgba(255,255,255,0.85); }
+
+        .card-link-badge svg {
+            width: 12px;
+            height: 12px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            flex-shrink: 0;
         }
 
         .no-scrollbar::-webkit-scrollbar { display: none; }
@@ -142,7 +416,7 @@
     </style>
 </head>
 <body class="flex flex-col items-center">
-    
+
     <!-- Fixed Background -->
     <div class="background-container">
         <div class="neon-ring"></div>
@@ -151,7 +425,7 @@
 
     <!-- Main Container -->
     <div class="relative z-10 w-full flex flex-col items-center px-4 py-8 md:py-12 min-h-screen">
-        
+
         <!-- Navigation Bar -->
         <nav class="liquid-glass glass-edge px-1.5 py-1.5 md:px-3 md:py-2.5 rounded-full mb-12 flex space-x-0.5 md:space-x-1.5 items-center justify-center max-w-[95vw]">
             <a href="../index.html" class="nav-link">Home</a>
@@ -160,11 +434,281 @@
             <a href="about.html" class="nav-link active">About</a>
         </nav>
 
-        <!-- Main Content (About) -->
-        <main class="w-full max-w-6xl flex flex-col flex-grow items-center justify-center text-center pb-20">
-            <h1 class="text-4xl md:text-6xl font-bold tracking-tight mb-6">About</h1>
-            <p class="text-white/50 text-xl">Work in Progress</p>
+        <!-- Main Content -->
+        <main class="w-full max-w-[860px] flex flex-col items-center pb-24 px-2 sm:px-4 mt-2">
+
+            <!-- Header -->
+            <div class="w-full mb-10 text-center">
+                <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-3">Beyond the job</h1>
+                <p class="text-white/50 text-lg">What shapes me, what drives me, and what doesn't show up on my CV.</p>
+            </div>
+
+            <!-- 2-column Interest Grid: row 1 → Remo | Fútbol, row 2 → Fitness | Libros, row 3 → Tiro | Jiu-Jitsu -->
+            <div class="w-full grid grid-cols-1 sm:grid-cols-2 gap-5">
+
+                <!-- Card 1: Remo (icon) -->
+                <div class="interest-card card-icon-bg">
+                    <button class="audio-btn" data-audio-src="../assets/about/Rowing.mp3" aria-label="Play narration">
+                        <svg class="icon-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        <svg class="icon-pause" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                        <svg class="icon-loader" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>
+                        <span class="audio-text">Listen</span>
+                    </button>
+                    <div class="card-content card-icon-layout">
+                        <div class="card-png-icon" style="background-image:url('../assets/about/remos.webp');"></div>
+                        <h2 class="card-title">Rowing</h2>
+                        <p class="card-desc">
+                            I reached a level of preparation that brought me to Paralympic qualification instances, earning a first-place medal.
+                            Institutional bureaucracy halted the possibility of competing internationally — a real frustration
+                            that I learned to process without bitterness. It's the most complete sport I've practiced:
+                            it works the whole body, demands total coordination, and teaches you to maintain the pace
+                            when fatigue accumulates. The water has a way of calibrating the mind.
+                        </p>
+                        <button class="read-more-btn" onclick="toggleDesc(this)">
+                            Read more
+                            <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 2: Fútbol de Amputados (icon) -->
+                <div class="interest-card card-icon-bg">
+                    <button class="audio-btn" data-audio-src="../assets/about/Football.mp3" aria-label="Play narration">
+                        <svg class="icon-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        <svg class="icon-pause" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                        <svg class="icon-loader" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>
+                        <span class="audio-text">Listen</span>
+                    </button>
+                    <div class="card-content card-icon-layout">
+                        <div class="card-png-icon" style="background-image:url('../assets/about/futbol-americano.webp');"></div>
+                        <h2 class="card-title">Amputee Football</h2>
+                        <p class="card-desc">
+                            Since becoming part of the national team, this sport has attracted me for concrete reasons:
+                            the cohesion generated by a team with such different stories, the level of technical demand,
+                            and the tactical agility it requires under conditions of reduced mobility.
+                            It's a context where intelligence and adaptation carry more weight than any physical advantage.
+                            Where technique manages to overcome my physical conditioning and intelligence advantage.
+                        </p>
+                        <button class="read-more-btn" onclick="toggleDesc(this)">
+                            Read more
+                            <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 3: Fitness & Bienestar (icon) -->
+                <div class="interest-card card-icon-bg">
+                    <button class="audio-btn" data-audio-src="../assets/about/Fitness.mp3" aria-label="Play narration">
+                        <svg class="icon-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        <svg class="icon-pause" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                        <svg class="icon-loader" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>
+                        <span class="audio-text">Listen</span>
+                    </button>
+                    <div class="card-content card-icon-layout">
+                        <div class="card-png-icon" style="background-image:url('../assets/about/estilo-de-vida.webp');"></div>
+                        <h2 class="card-title">Fitness & Wellness</h2>
+                        <p class="card-desc">
+                            Fitness was the first thing I studied seriously on my own. It was one of the tools that
+                            sustained me the most during some of the hardest times: stages marked by emptiness, pain,
+                            and loss of meaning, partly with vague memories of the cancer I had at age five.
+                            I developed a strong relationship with determination, as if a part of me wanted to become
+                            invincible at any cost. Early workouts were tough, involving Murph routines and calisthenics,
+                            and that phase ended up being an important foundation for everything that followed.
+                            That search also led me from biomechanics to psychology: understanding how we react under pressure,
+                            how habits shape identity, and how the mind can push you to either grow or break if you don't know
+                            how to set boundaries. I designed my own routines, recommended protocols, and learned a lot about
+                            discipline, consistency, and exertion tolerance. One of my biggest mistakes was excessive self-demand.
+                            For years I carried a very rigid idea of enduring everything in silence and keeping moving forward.
+                            From that also came my tattoo of the lion with the cross on its chest, a way to represent that
+                            period of pain, determination, and resilience. Living like that comes with a price.
+                            This time I paid for it with my mental health. The way out wasn't to stop pushing myself,
+                            but to learn to listen to my emotional needs, lower the internal pressure, and make space for fun,
+                            connection, and being human.
+                        </p>
+                        <button class="read-more-btn" onclick="toggleDesc(this)">
+                            Read more
+                            <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 4: Libros & Aprendizaje (icon + link) -->
+                <div class="interest-card card-icon-bg">
+                    <button class="audio-btn" data-audio-src="../assets/about/Books.mp3" aria-label="Play narration">
+                        <svg class="icon-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        <svg class="icon-pause" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                        <svg class="icon-loader" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>
+                        <span class="audio-text">Listen</span>
+                    </button>
+                    <div class="card-content card-icon-layout">
+                        <div class="card-png-icon" style="background-image:url('../assets/about/libros.webp');"></div>
+                        <h2 class="card-title">Books & Learning</h2>
+                        <p class="card-desc">
+                            I read and listen. Some books I read completely; others I consume as audiobooks,
+                            depending on the moment or the type of content. The topics that have marked me the most
+                            are business, psychology, leadership, and communication. There are reads that change how
+                            you see the world and reads that confirm what you already intuited, both necessary as long
+                            as you don't fall into the loop of just being a book collector. I think long-term and act
+                            accordingly; we go to our graves with our actions. The idea of treating others how you want
+                            to be treated always resonated with me — not as a precept, but as a principle of social architecture.
+                            We are interdependent beings, even if it's sometimes hard to accept. I learned that there are
+                            times for precision and times for authenticity and fun. I developed the judgment to distinguish them,
+                            even though it cost me mistakes. I've always been interested in understanding the 'why' of things
+                            and the human mind, communication, and how habits build identity. The business world attracted me
+                            for that very reason: actions, not words. The rest explains itself.
+                            Professionally, Elon Musk has been one of my clearest references for his way of pushing forward
+                            with impact, vision, and aggressive execution. My interest in technology is also about seeing how
+                            it transforms the world and how it can be applied to concrete human problems, such as developing
+                            increasingly advanced prosthetics for my case.
+                        </p>
+                        <button class="read-more-btn" onclick="toggleDesc(this)">
+                            Read more
+                            <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+                        </button>
+                        <a href="https://docs.google.com/document/d/1ylWCam5qaHPDJRl0zHdpyECUzYK31Av_xlAI7xj-kL0/edit?usp=sharing" id="books-link" class="card-link-badge" target="_blank" rel="noopener noreferrer" style="margin-top:auto; align-self:flex-end; font-size:12px; color:rgba(255,255,255,0.55); gap:6px;">
+                            View book list
+                            <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card 5: Tiro Deportivo y Naturaleza -->
+                <div class="interest-card card-icon-bg">
+                    <button class="audio-btn" data-audio-src="../assets/about/Nature.mp3" aria-label="Play narration">
+                        <svg class="icon-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        <svg class="icon-pause" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                        <svg class="icon-loader" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>
+                        <span class="audio-text">Listen</span>
+                    </button>
+                    <div class="card-content card-icon-layout">
+                        <div class="card-png-icon" style="background-image:url('../assets/about/aceituna-naturaleza.webp');"></div>
+                        <h2 class="card-title">Sport Shooting & Nature</h2>
+                        <p class="card-desc">
+                            A systematically underestimated discipline. It requires concentration, breath control,
+                            and pulse management at a level that few activities demand so purely. I'm good at this
+                            and I had fun doing it. It fits with my affinity for the outdoors and nature —
+                            spaces where I truly disconnect and reset. The responsibility that comes with a weapon
+                            and my affinity for nature have always gone hand in hand: I value its flora and,
+                            above all, its fauna, without ever having felt the need to harm it.
+                        </p>
+                        <button class="read-more-btn" onclick="toggleDesc(this)">
+                            Read more
+                            <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 6: Jiu-Jitsu & Box -->
+                <div class="interest-card card-icon-bg">
+                    <button class="audio-btn" data-audio-src="../assets/about/Boxing.mp3" aria-label="Play narration">
+                        <svg class="icon-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        <svg class="icon-pause" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                        <svg class="icon-loader" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>
+                        <span class="audio-text">Listen</span>
+                    </button>
+                    <div class="card-content card-icon-layout">
+                        <div class="card-png-icon" style="background-image:url('../assets/about/boxeo.webp');"></div>
+                        <h2 class="card-title">Jiu-Jitsu & Boxing</h2>
+                        <p class="card-desc">
+                            I've always been drawn to contact sports — the controlled anger that triggers adrenaline,
+                            reading the opponent, managing tension, and technique under direct pressure.
+                            I practiced jiu-jitsu and boxing for that reason. I had to stop. The amputation of my right
+                            leg makes certain movements unviable at a competitive level. It was a difficult decision,
+                            but also a concrete lesson: you have to accept restrictions without drama and redirect
+                            energy to where it can flow better.
+                        </p>
+                        <button class="read-more-btn" onclick="toggleDesc(this)">
+                            Read more
+                            <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
         </main>
     </div>
+
+<script>
+    function toggleDesc(btn) {
+        const p = btn.previousElementSibling;
+        const isExpanded = p.classList.toggle('expanded');
+        btn.classList.toggle('expanded', isExpanded);
+        btn.firstChild.textContent = isExpanded ? 'Read less' : 'Read more';
+    }
+
+    // Audio Playback Logic
+    const globalAudio = new Audio();
+    let currentPlayingBtn = null;
+
+    globalAudio.addEventListener('waiting', () => {
+        if(currentPlayingBtn) {
+            currentPlayingBtn.classList.add('loading');
+            currentPlayingBtn.classList.remove('playing');
+        }
+    });
+
+    globalAudio.addEventListener('playing', () => {
+        if(currentPlayingBtn) {
+            currentPlayingBtn.classList.remove('loading');
+            currentPlayingBtn.classList.add('playing');
+        }
+    });
+
+    globalAudio.addEventListener('pause', () => {
+        if(currentPlayingBtn) {
+            currentPlayingBtn.classList.remove('playing');
+            currentPlayingBtn.classList.remove('loading');
+        }
+    });
+
+    globalAudio.addEventListener('ended', () => {
+        if(currentPlayingBtn) {
+            currentPlayingBtn.classList.remove('playing');
+            currentPlayingBtn.classList.remove('loading');
+            currentPlayingBtn = null;
+        }
+    });
+
+    document.querySelectorAll('.audio-btn').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            
+            const src = this.getAttribute('data-audio-src');
+            if(!src) return;
+
+            // Same audio
+            if (currentPlayingBtn === this) {
+                if (!globalAudio.paused) {
+                    globalAudio.pause();
+                } else {
+                    this.classList.add('loading');
+                    globalAudio.play().catch(err => console.log(err));
+                }
+                return;
+            }
+
+            // Different audio
+            if (currentPlayingBtn && currentPlayingBtn !== this) {
+                currentPlayingBtn.classList.remove('playing', 'loading');
+            }
+
+            currentPlayingBtn = this;
+            this.classList.add('loading');
+            this.classList.remove('playing');
+
+            if (globalAudio.src !== window.location.origin + src.replace('..', '')) {
+                 globalAudio.src = src;
+                 globalAudio.load();
+            }
+            
+            globalAudio.play().catch(err => {
+                console.log('Playback prevented:', err);
+                this.classList.remove('loading');
+                currentPlayingBtn = null;
+            });
+        });
+    });
+
+</script>
 </body>
 </html>

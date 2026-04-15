@@ -23,7 +23,7 @@
             min-height: 100vh;
         }
 
-        /* FONDO - ESCENA DE ILUMINACIÓN */
+        /* BACKGROUND - LIGHTING SCENE */
         .background-container {
             position: fixed;
             inset: 0;
@@ -66,7 +66,7 @@
             pointer-events: none;
         }
 
-        /* EFECTO LIQUID GLASS */
+        /* LIQUID GLASS EFFECT */
         .liquid-glass {
             background: linear-gradient(
                 135deg,
@@ -101,7 +101,7 @@
             pointer-events: none;
         }
 
-        /* NAVEGACIÓN GLOBAL */
+        /* GLOBAL NAVIGATION */
         .nav-link {
             padding: 8px 12px;
             border-radius: 999px;
@@ -163,7 +163,7 @@
         <!-- Main Content (Education) -->
         <main class="w-full max-w-[1000px] flex flex-col flex-grow items-center pb-20 px-2 sm:px-4 mt-2">
             
-            <div class="w-full mb-4 md:mb-6 text-left">
+            <div class="w-full mb-4 md:mb-6 text-center">
                 <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-2">Education</h1>
                 <p class="text-white/50 text-lg">A comprehensive overview of my technical certifications and degrees.</p>
             </div>
@@ -230,297 +230,339 @@
         const education = [
             { 
                 id: 1, 
-                title: "Machine Learning Specialization", 
-                platform: "Coursera", 
-                instructor: "Andrew Ng (Stanford University, DeepLearning.AI)", 
-                modality: "Recorded", 
-                theme: "Machine Learning", 
-                focus: "Technical", 
-                status: "Completed", 
-                desc: "Foundational specialization covering supervised and unsupervised learning, neural networks, and practical machine learning workflows for real-world applications.",
-                hasCertificate: true, 
-                url: "https://www.coursera.org/account/accomplishments/specialization/certificate/S9M0OUGCO2X4", 
-                img: "../assets/education/Machine Learning Specialization.jpeg" 
-            },
-            { 
-                id: 2, 
-                title: "Deep Learning Specialization", 
-                platform: "Coursera", 
-                instructor: "Andrew Ng, Younes Bensouda Mourri, Kian Katanforoosh (DeepLearning.AI)", 
-                modality: "Recorded", 
-                theme: "Deep Learning", 
-                focus: "Technical", 
-                status: "Completed", 
-                desc: "Foundational specialization covering neural networks, convolutional and sequence models, hyperparameter tuning, and practical strategies for building deep learning systems.",
-                hasCertificate: true, 
-                url: "https://www.coursera.org/account/accomplishments/specialization/certificate/ZS38XRFFRZCZ", 
-                img: "../assets/education/Deep Learning Specialization.jpeg" 
-            },
-            { 
-                id: 3, 
-                title: "Machine Learning in Production", 
-                platform: "Coursera", 
-                instructor: "Andrew Ng (DeepLearning.AI)", 
-                modality: "Recorded", 
-                theme: "Machine Learning", 
-                focus: "Technical", 
-                status: "Completed", 
-                desc: "Course focused on designing, deploying, and maintaining production ML systems, including project scoping, data pipelines, model baselines, error analysis, and concept drift handling.",
-                hasCertificate: true, 
-                url: "https://www.coursera.org/account/accomplishments/certificate/5L7XWA5G5HVV", 
-                img: "../assets/education/Machine Learning in Production.jpeg" 
-            },
-            { 
-                id: 4, 
-                title: "Machine Learning on Google Cloud Specialization", 
-                platform: "Coursera", 
-                instructor: "Google Cloud Training (Google Cloud)", 
-                modality: "Recorded", 
-                theme: "Cloud Computing", 
-                focus: "Technical", 
-                status: "Completed", 
-                desc: "Specialization focused on building end-to-end machine learning workflows on Google Cloud, including Vertex AI, data-to-AI tooling, generative AI options, and hands-on cloud labs.",
-                hasCertificate: true, 
-                url: "https://www.coursera.org/account/accomplishments/specialization/certificate/GWUG336N1Z94", 
-                img: "../assets/education/Machine Learning on Google Cloud Specialization.jpeg" 
-            },
-            { 
-                id: 5, 
                 title: "Advanced Machine Learning on Google Cloud", 
                 platform: "Coursera", 
                 instructor: "Google Cloud Training (Google Cloud)", 
                 modality: "Recorded", 
-                theme: "Cloud Computing", 
+                themes: ["Machine Learning", "Cloud Computing", "Artificial Intelligence"], 
                 focus: "Technical", 
                 status: "Completed", 
                 desc: "Advanced specialization focused on building scalable, production-ready ML systems on Google Cloud, covering structured data, computer vision, NLP, time series, recommendation systems, and hands-on labs.",
                 hasCertificate: true, 
                 url: "https://www.coursera.org/account/accomplishments/specialization/certificate/MYX8XXGJGWK3", 
-                img: "../assets/education/Advanced Machine Learning on Google Cloud.jpeg" 
+                img: "../assets/education/Advanced Machine Learning on Google Cloud.webp" 
             },
             { 
-                id: 6, 
-                title: "Meta iOS UI Development", 
-                platform: "Coursera", 
-                instructor: "Anis Koubaa, Taught By Meta Staff (Meta)", 
-                modality: "Recorded", 
-                theme: "iOS Development", 
-                focus: "Technical", 
-                status: "Completed", 
-                desc: "Specialization focused on building iOS user interfaces with Swift, UIKit, and SwiftUI, covering core programming concepts, interface design, and hands-on mobile app development.",
-                hasCertificate: true, 
-                url: "https://www.coursera.org/account/accomplishments/specialization/certificate/F4SE2P7OHTNS", 
-                img: "../assets/education/Meta iOS UI Development.jpeg" 
-            },
-            { 
-                id: 7, 
-                title: "IBM Machine Learning", 
-                platform: "Coursera", 
-                instructor: "Xintong Li, Joseph Santarcangelo, Mark J. Grover (IBM)", 
-                modality: "Recorded", 
-                theme: "Machine Learning", 
-                focus: "Technical", 
-                status: "Completed", 
-                desc: "Specialization focused on practical machine learning with Python, covering data preparation, supervised and unsupervised learning, regression, classification, clustering, and hands-on projects with industry tools.",
-                hasCertificate: true, 
-                url: "https://www.coursera.org/account/accomplishments/specialization/certificate/QE6ULCHQT6T6", 
-                img: "../assets/education/IBM Machine Learning.jpeg" 
-            },
-            { 
-                id: 8, 
+                id: 2, 
                 title: "AWS Cloud Solutions Architect", 
                 platform: "Coursera", 
                 instructor: "Amazon Web Services (AWS)", 
                 modality: "Recorded", 
-                theme: "Cloud Computing", 
+                themes: ["Cloud Computing"], 
                 focus: "Technical", 
                 status: "Completed", 
                 desc: "Professional certificate focused on AWS cloud architecture, covering core services, architectural design, security, networking, data lakes, and preparation for the AWS Certified Solutions Architect - Associate exam.",
                 hasCertificate: true, 
                 url: "https://www.coursera.org/account/accomplishments/specialization/certificate/5S455WOTUURW", 
-                img: "../assets/education/AWS Cloud Solutions Architect.jpeg" 
+                img: "../assets/education/AWS Cloud Solutions Architect.webp" 
             },
             { 
-                id: 9, 
-                title: "Strengthen Your Business Savvy Specialization", 
-                platform: "Coursera", 
-                instructor: "Harvard Business Review (HBR)", 
-                modality: "Recorded", 
-                theme: "Business", 
-                focus: "Business", 
-                status: "Completed", 
-                desc: "Specialization focused on core business skills for leaders, covering decision-making, budgeting, strategy, and practical business judgment in modern organizations.",
-                hasCertificate: true, 
-                url: "https://www.coursera.org/account/accomplishments/specialization/certificate/PDRL0DJN9YE7", 
-                img: "../assets/education/Strengthen Your Business Savvy Specialization.jpeg" 
-            },
-            { 
-                id: 10, 
+                id: 3, 
                 title: "Boost Your Leadership Impact Specialization", 
                 platform: "Coursera", 
                 instructor: "Harvard Business Review (HBR)", 
                 modality: "Recorded", 
-                theme: "Leadership", 
-                focus: "Professional", 
+                themes: ["Business", "Leadership"], 
+                focus: "Business", 
                 status: "Completed", 
                 desc: "Specialization focused on core leadership skills, including people management, conflict handling, effective communication, and influence across teams and organizations.",
                 hasCertificate: true, 
                 url: "https://www.coursera.org/account/accomplishments/specialization/certificate/COWCCXZDLSBD", 
-                img: "../assets/education/Boost Your Leadership Impact Specialization.jpeg" 
+                img: "../assets/education/Boost Your Leadership Impact Specialization.webp" 
             },
             { 
-                id: 11, 
-                title: "IBM IT Support", 
-                platform: "Coursera", 
-                instructor: "IBM Skills Network Team (IBM)", 
-                modality: "Recorded", 
-                theme: "IT Support", 
+                id: 4, 
+                title: "Computer Engineering", 
+                platform: "Udelar", 
+                instructor: "FING (Udelar)", 
+                modality: "University", 
+                themes: ["Computer Science"], 
                 focus: "Technical", 
-                status: "Completed", 
-                desc: "Professional certificate focused on IT fundamentals, hardware and software setup, troubleshooting, networking, cybersecurity, cloud computing, and customer support workflows for entry-level IT roles.",
-                hasCertificate: true, 
-                url: "https://www.coursera.org/account/accomplishments/specialization/certificate/UDHZSS5CH3AB", 
-                img: "../assets/education/IBM IT Support.jpeg" 
+                hasCertificate: false, 
+                status: "Pending", 
+                desc: "Undergraduate program with a traditional academic approach to computer science and engineering, focused on theoretical foundations and core technical subjects.",
+                url: "https://www.fing.edu.uy/en/carrera/grado/ingenier%C3%ADa-en-computaci%C3%B3n", 
+                img: "../assets/education/Computer Engineering.webp" 
             },
             { 
-                id: 12, 
-                title: "IBM Data Science", 
-                platform: "Coursera", 
-                instructor: "IBM Skills Network Team (IBM)", 
-                modality: "Recorded", 
-                theme: "Data Science", 
-                focus: "Technical", 
-                status: "Completed", 
-                desc: "Professional certificate focused on the end-to-end data science workflow, covering Python, SQL, data analysis, visualization, machine learning, and hands-on projects with industry tools.",
-                hasCertificate: true, 
-                url: "https://www.coursera.org/account/accomplishments/specialization/certificate/3HEI54UWJKY6", 
-                img: "../assets/education/IBM Data Science.jpeg" 
-            },
-            { 
-                id: 13, 
-                title: "IBM Full Stack Software Developer", 
-                platform: "Coursera", 
-                instructor: "IBM Skills Network Team (IBM)", 
-                modality: "Recorded", 
-                theme: "Full-Stack Development", 
-                focus: "Technical", 
-                status: "Completed", 
-                desc: "Professional certificate focused on full-stack and cloud-native development, covering front-end and back-end technologies, Python, JavaScript, React, Node.js, databases, APIs, Docker, Kubernetes, and deployment workflows.",
-                hasCertificate: true, 
-                url: "https://www.coursera.org/account/accomplishments/specialization/certificate/3M3KYUTTN0KW", 
-                img: "../assets/education/IBM Full Stack Software Developer.jpeg" 
-            },
-            { 
-                id: 14, 
-                title: "Microsoft Full-Stack Developer", 
-                platform: "Coursera", 
-                instructor: "Microsoft (Microsoft)", 
-                modality: "Recorded", 
-                theme: "Full-Stack Development", 
-                focus: "Technical", 
-                status: "Completed", 
-                desc: "Professional certificate focused on end-to-end web application development, covering front-end and back-end skills, databases, APIs, .NET, cloud deployment, CI/CD, and AI-assisted workflows with Microsoft Copilot.",
-                hasCertificate: true, 
-                url: "https://www.coursera.org/account/accomplishments/specialization/certificate/LUXQNC82O12A", 
-                img: "../assets/education/Microsoft Full-Stack Developer.jpeg" 
-            },
-            { 
-                id: 15, 
-                title: "Google Advanced Data Analytics", 
-                platform: "Coursera", 
-                instructor: "Google Career Certificates (Google)", 
-                modality: "Recorded", 
-                theme: "Data Analytics", 
-                focus: "Technical", 
-                status: "Completed", 
-                desc: "Professional certificate focused on advanced data analytics, covering statistical analysis, Python, regression models, machine learning, predictive modeling, and experimental design for data-driven decision-making.",
-                hasCertificate: true, 
-                url: "https://www.coursera.org/account/accomplishments/specialization/certificate/56YWE4L9S404", 
-                img: "../assets/education/Google Advanced Data Analytics.jpeg" 
-            },
-            { 
-                id: 16, 
-                title: "Science of Exercise", 
-                platform: "Coursera", 
-                instructor: "Robert Mazzeo, Ph.D. (University of Colorado Boulder)", 
-                modality: "Recorded", 
-                theme: "Exercise Science", 
-                focus: "Technical", 
-                status: "Completed", 
-                desc: "Course focused on exercise physiology, covering how the body responds to physical stress, energy metabolism, nutrition, fatigue, performance-enhancing drugs, and the health benefits of exercise.",
-                hasCertificate: true, 
-                url: "https://www.coursera.org/account/accomplishments/certificate/173C631S8C2R", 
-                img: "../assets/education/Science of Exercise.jpeg" 
-            },
-            { 
-                id: 17, 
+                id: 5, 
                 title: "CS50's Introduction to Artificial Intelligence with Python", 
                 platform: "Harvard", 
                 instructor: "David J. Malan, Brian Yu (Harvard University)", 
                 modality: "Recorded", 
-                theme: "Artificial Intelligence", 
+                themes: ["Artificial Intelligence", "Machine Learning", "Computer Science"], 
                 focus: "Technical", 
                 status: "Completed", 
                 desc: "University course focused on the foundations of artificial intelligence with Python, covering graph search, classification, optimization, reinforcement learning, neural networks, and hands-on AI projects.",
                 hasCertificate: true, 
                 url: "https://cs50.harvard.edu/certificates/7207ccad-dd78-4a05-aa1e-be710aafc843", 
-                img: "../assets/education/CS50's Introduction to Artificial Intelligence with Python.jpeg" 
+                img: "../assets/education/CS50's Introduction to Artificial Intelligence with Python.webp" 
             },
             { 
-                id: 18, 
-                title: "CS50's Introduction to Programming with Python", 
-                platform: "Harvard", 
-                instructor: "David J. Malan (Harvard University)", 
-                modality: "Recorded", 
-                theme: "Python Programming", 
-                focus: "Technical", 
-                status: "Completed", 
-                desc: "University course focused on Python programming fundamentals, covering functions, variables, conditionals, loops, exceptions, unit testing, file I/O, regular expressions, object-oriented programming, and practical problem-solving.",
-                hasCertificate: true, 
-                url: "https://cs50.harvard.edu/certificates/2e688a37-417b-4471-ad3f-68669f43431c", 
-                img: "../assets/education/CS50's Introduction to Programming with Python.jpeg" 
-            },
-            { 
-                id: 19, 
-                title: "CS50's Introduction to Databases with SQL", 
-                platform: "Harvard", 
-                instructor: "David J. Malan, Carter Zenke (Harvard University)", 
-                modality: "Recorded", 
-                theme: "Databases", 
-                focus: "Technical", 
-                status: "Completed", 
-                desc: "University course focused on relational databases and SQL, covering data modeling, normalization, joins, constraints, indexing, views, transactions, and database integration with other programming languages.",
-                hasCertificate: true, 
-                url: "https://cs50.harvard.edu/certificates/c0f76ac5-ab62-4a35-80fd-66c9ac2dc8fe", 
-                img: "../assets/education/CS50's Introduction to Databases with SQL.jpeg" 
-            },
-            { 
-                id: 20, 
+                id: 6, 
                 title: "CS50's Introduction to Computer Science", 
                 platform: "Harvard", 
                 instructor: "David J. Malan, Doug Lloyd, Brian Yu (Harvard University)", 
                 modality: "Recorded", 
-                theme: "Computer Science", 
+                themes: ["Computer Science"], 
                 focus: "Technical", 
                 status: "Completed", 
                 desc: "University course focused on core computer science and programming fundamentals, covering computational thinking, algorithms, data structures, abstraction, security, software engineering, and hands-on problem solving across multiple languages.",
                 hasCertificate: true, 
                 url: "https://cs50.harvard.edu/certificates/a2fc170c-3e07-46d7-88ed-2b800c22c756", 
-                img: "../assets/education/CS50's Introduction to Computer Science.jpeg" 
+                img: "../assets/education/CS50's Introduction to Computer Science.webp" 
             },
             { 
-                id: 21, 
+                id: 7, 
+                title: "CS50's Introduction to Databases with SQL", 
+                platform: "Harvard", 
+                instructor: "David J. Malan, Carter Zenke (Harvard University)", 
+                modality: "Recorded", 
+                themes: ["Databases", "Computer Science"], 
+                focus: "Technical", 
+                status: "Completed", 
+                desc: "University course focused on relational databases and SQL, covering data modeling, normalization, joins, constraints, indexing, views, transactions, and database integration with other programming languages.",
+                hasCertificate: true, 
+                url: "https://cs50.harvard.edu/certificates/c0f76ac5-ab62-4a35-80fd-66c9ac2dc8fe", 
+                img: "../assets/education/CS50's Introduction to Databases with SQL.webp" 
+            },
+            { 
+                id: 8, 
+                title: "CS50's Introduction to Programming with Python", 
+                platform: "Harvard", 
+                instructor: "David J. Malan (Harvard University)", 
+                modality: "Recorded", 
+                themes: ["Computer Science"], 
+                focus: "Technical", 
+                status: "Completed", 
+                desc: "University course focused on Python programming fundamentals, covering functions, variables, conditionals, loops, exceptions, unit testing, file I/O, regular expressions, object-oriented programming, and practical problem-solving.",
+                hasCertificate: true, 
+                url: "https://cs50.harvard.edu/certificates/2e688a37-417b-4471-ad3f-68669f43431c", 
+                img: "../assets/education/CS50's Introduction to Programming with Python.webp" 
+            },
+            { 
+                id: 9, 
+                title: "Deep Learning Specialization", 
+                platform: "Coursera", 
+                instructor: "Andrew Ng, Younes Bensouda Mourri, Kian Katanforoosh (DeepLearning.AI)", 
+                modality: "Recorded", 
+                themes: ["Machine Learning", "Artificial Intelligence"], 
+                focus: "Technical", 
+                status: "Completed", 
+                desc: "Foundational specialization covering neural networks, convolutional and sequence models, hyperparameter tuning, and practical strategies for building deep learning systems.",
+                hasCertificate: true, 
+                url: "https://www.coursera.org/account/accomplishments/specialization/certificate/ZS38XRFFRZCZ", 
+                img: "../assets/education/Deep Learning Specialization.webp" 
+            },
+            { 
+                id: 10, 
+                title: "E-com Growth Partner", 
+                platform: "E-com Growth Partners", 
+                instructor: "Jaime Higuera, Carlos Higuera (E-com Growth Partners)", 
+                modality: "Live Sessions", 
+                themes: ["Marketing", "Sales", "Business"], 
+                focus: "Business", 
+                hasCertificate: false, 
+                status: "Completed", 
+                desc: "Live training that directly supported participation in the creation of an LLC built to work with e-commerce brands in Chile and Spain, including projects across different sectors and collaboration with recognized personal brands and businesses within their markets. This experience strengthened real-world execution in client acquisition, sales systems, and growth strategy. The training itself focused on e-commerce growth strategies based on current U.S. market methodologies, including sales, client acquisition, funnel building, media buying, organic and paid content, conversion copywriting, offer development, and performance-driven optimization.",
+                url: "", 
+                img: "../assets/education/E-com Growth Partner.webp" 
+            },
+            { 
+                id: 11, 
+                title: "Funnel Builder – Outsider", 
+                platform: "Bilhon", 
+                instructor: "Thiago Finch (Bilhon), Alan Nicolas (Academia Lendár[IA])", 
+                modality: "Live Sessions", 
+                themes: ["Business", "Sales", "Marketing", "Artificial Intelligence"], 
+                focus: "Business", 
+                hasCertificate: false, 
+                status: "Completed", 
+                desc: "Live training focused on infoproducts and sales funnel building, strongly influenced by current U.S. digital marketing strategies, with emphasis on offer structuring, conversion copywriting, AI implementation for process optimization, and the design of digital acquisition and sales systems. The program also covered practical methods for improving funnel performance, refining customer journeys, and building scalable sales processes tailored to digital products and online education offers.",
+                url: "", 
+                img: "../assets/education/Funnel Builder – Outsider.webp" 
+            },
+            { 
+                id: 12, 
+                title: "Google Advanced Data Analytics", 
+                platform: "Coursera", 
+                instructor: "Google Career Certificates (Google)", 
+                modality: "Recorded", 
+                themes: ["Data Analytics", "Data Science", "Machine Learning"], 
+                focus: "Technical", 
+                status: "Completed", 
+                desc: "Professional certificate focused on advanced data analytics, covering statistical analysis, Python, regression models, machine learning, predictive modeling, and experimental design for data-driven decision-making.",
+                hasCertificate: true, 
+                url: "https://www.coursera.org/account/accomplishments/specialization/certificate/56YWE4L9S404", 
+                img: "../assets/education/Google Advanced Data Analytics.webp" 
+            },
+            { 
+                id: 13, 
                 title: "IA Heroes", 
                 platform: "Learning Heroes", 
                 instructor: "Javier Sáez, Arnau Ramió (Learning Heroes)", 
                 modality: "Live Sessions", 
-                theme: "Artificial Intelligence", 
+                themes: ["Artificial Intelligence", "Automation", "Business"], 
                 focus: "Business", 
                 hasCertificate: false, 
                 status: "Completed", 
-                desc: "Live training in applied artificial intelligence, focused on AI fundamentals, prompt engineering, agent creation, app development, process automation, audiovisual production, and digital content generation. This training also supported the creation of an LLC, co-founded with a partner, focused on AI implementation, process optimization, and agent-based automation for business use cases.",
+                desc: "Live training that directly supported the co-founding of an LLC with a partner focused on AI implementation, process optimization, and agent-based automation for real business use cases. Through this experience, AI-driven solutions were developed for areas such as aesthetic clinics, sports centers, and other service-based businesses, combining automation, operational efficiency, and digital execution. The training itself focused on applied artificial intelligence, including AI fundamentals, prompt engineering, agent creation, app development, process automation, audiovisual production, and digital content generation.",
                 url: "", 
-                img: "../assets/education/IA Heroes.jpeg" 
+                img: "../assets/education/IA Heroes.webp" 
+            },
+            { 
+                id: 14, 
+                title: "IBM Data Science", 
+                platform: "Coursera", 
+                instructor: "IBM Skills Network Team (IBM)", 
+                modality: "Recorded", 
+                themes: ["Data Science", "Machine Learning", "Data Analytics"], 
+                focus: "Technical", 
+                status: "Completed", 
+                desc: "Professional certificate focused on the end-to-end data science workflow, covering Python, SQL, data analysis, visualization, machine learning, and hands-on projects with industry tools.",
+                hasCertificate: true, 
+                url: "https://www.coursera.org/account/accomplishments/specialization/certificate/3HEI54UWJKY6", 
+                img: "../assets/education/IBM Data Science.webp" 
+            },
+            { 
+                id: 15, 
+                title: "IBM Full Stack Software Developer", 
+                platform: "Coursera", 
+                instructor: "IBM Skills Network Team (IBM)", 
+                modality: "Recorded", 
+                themes: ["Full-Stack Development", "Cloud Computing", "Web Development"], 
+                focus: "Technical", 
+                status: "Completed", 
+                desc: "Professional certificate focused on full-stack and cloud-native development, covering front-end and back-end technologies, Python, JavaScript, React, Node.js, databases, APIs, Docker, Kubernetes, and deployment workflows.",
+                hasCertificate: true, 
+                url: "https://www.coursera.org/account/accomplishments/specialization/certificate/3M3KYUTTN0KW", 
+                img: "../assets/education/IBM Full Stack Software Developer.webp" 
+            },
+            { 
+                id: 16, 
+                title: "IBM IT Support", 
+                platform: "Coursera", 
+                instructor: "IBM Skills Network Team (IBM)", 
+                modality: "Recorded", 
+                themes: ["IT Support", "Cybersecurity", "Cloud Computing"], 
+                focus: "Technical", 
+                status: "Completed", 
+                desc: "Professional certificate focused on IT fundamentals, hardware and software setup, troubleshooting, networking, cybersecurity, cloud computing, and customer support workflows for entry-level IT roles.",
+                hasCertificate: true, 
+                url: "https://www.coursera.org/account/accomplishments/specialization/certificate/UDHZSS5CH3AB", 
+                img: "../assets/education/IBM IT Support.webp" 
+            },
+            { 
+                id: 17, 
+                title: "IBM Machine Learning", 
+                platform: "Coursera", 
+                instructor: "Xintong Li, Joseph Santarcangelo, Mark J. Grover (IBM)", 
+                modality: "Recorded", 
+                themes: ["Machine Learning", "Data Science", "Artificial Intelligence"], 
+                focus: "Technical", 
+                status: "Completed", 
+                desc: "Specialization focused on practical machine learning with Python, covering data preparation, supervised and unsupervised learning, regression, classification, clustering, and hands-on projects with industry tools.",
+                hasCertificate: true, 
+                url: "https://www.coursera.org/account/accomplishments/specialization/certificate/QE6ULCHQT6T6", 
+                img: "../assets/education/IBM Machine Learning.webp" 
+            },
+            { 
+                id: 18, 
+                title: "Machine Learning in Production", 
+                platform: "Coursera", 
+                instructor: "Andrew Ng (DeepLearning.AI)", 
+                modality: "Recorded", 
+                themes: ["Machine Learning", "Artificial Intelligence"], 
+                focus: "Technical", 
+                status: "Completed", 
+                desc: "Course focused on designing, deploying, and maintaining production ML systems, including project scoping, data pipelines, model baselines, error analysis, and concept drift handling.",
+                hasCertificate: true, 
+                url: "https://www.coursera.org/account/accomplishments/certificate/5L7XWA5G5HVV", 
+                img: "../assets/education/Machine Learning in Production.webp" 
+            },
+            { 
+                id: 19, 
+                title: "Machine Learning on Google Cloud Specialization", 
+                platform: "Coursera", 
+                instructor: "Google Cloud Training (Google Cloud)", 
+                modality: "Recorded", 
+                themes: ["Machine Learning", "Cloud Computing", "Artificial Intelligence"], 
+                focus: "Technical", 
+                status: "Completed", 
+                desc: "Specialization focused on building end-to-end machine learning workflows on Google Cloud, including Vertex AI, data-to-AI tooling, generative AI options, and hands-on cloud labs.",
+                hasCertificate: true, 
+                url: "https://www.coursera.org/account/accomplishments/specialization/certificate/GWUG336N1Z94", 
+                img: "../assets/education/Machine Learning on Google Cloud Specialization.webp" 
+            },
+            { 
+                id: 20, 
+                title: "Machine Learning Specialization", 
+                platform: "Coursera", 
+                instructor: "Andrew Ng (Stanford University, DeepLearning.AI)", 
+                modality: "Recorded", 
+                themes: ["Machine Learning", "Artificial Intelligence"], 
+                focus: "Technical", 
+                status: "Completed", 
+                desc: "Foundational specialization covering supervised and unsupervised learning, neural networks, and practical machine learning workflows for real-world applications.",
+                hasCertificate: true, 
+                url: "https://www.coursera.org/account/accomplishments/specialization/certificate/S9M0OUGCO2X4", 
+                img: "../assets/education/Machine Learning Specialization.webp" 
+            },
+            { 
+                id: 21, 
+                title: "Meta iOS UI Development", 
+                platform: "Coursera", 
+                instructor: "Anis Koubaa, Taught By Meta Staff (Meta)", 
+                modality: "Recorded", 
+                themes: ["Mobile Development"], 
+                focus: "Technical", 
+                status: "Completed", 
+                desc: "Specialization focused on building iOS user interfaces with Swift, UIKit, and SwiftUI, covering core programming concepts, interface design, and hands-on mobile app development.",
+                hasCertificate: true, 
+                url: "https://www.coursera.org/account/accomplishments/specialization/certificate/F4SE2P7OHTNS", 
+                img: "../assets/education/Meta iOS UI Development.webp" 
+            },
+            { 
+                id: 22, 
+                title: "Microsoft Full-Stack Developer", 
+                platform: "Coursera", 
+                instructor: "Microsoft (Microsoft)", 
+                modality: "Recorded", 
+                themes: ["Full-Stack Development", "Web Development", "Cloud Computing", "Artificial Intelligence"], 
+                focus: "Technical", 
+                status: "Completed", 
+                desc: "Professional certificate focused on end-to-end web application development, covering front-end and back-end skills, databases, APIs, .NET, cloud deployment, CI/CD, and AI-assisted workflows with Microsoft Copilot.",
+                hasCertificate: true, 
+                url: "https://www.coursera.org/account/accomplishments/specialization/certificate/LUXQNC82O12A", 
+                img: "../assets/education/Microsoft Full-Stack Developer.webp" 
+            },
+            { 
+                id: 23, 
+                title: "Science of Exercise", 
+                platform: "Coursera", 
+                instructor: "Robert Mazzeo, Ph.D. (University of Colorado Boulder)", 
+                modality: "Recorded", 
+                themes: ["Exercise Science"], 
+                focus: "Technical", 
+                status: "Completed", 
+                desc: "Course focused on exercise physiology, covering how the body responds to physical stress, energy metabolism, nutrition, fatigue, performance-enhancing drugs, and the health benefits of exercise.",
+                hasCertificate: true, 
+                url: "https://www.coursera.org/account/accomplishments/certificate/173C631S8C2R", 
+                img: "../assets/education/Science of Exercise.webp" 
+            },
+            { 
+                id: 24, 
+                title: "Strengthen Your Business Savvy Specialization", 
+                platform: "Coursera", 
+                instructor: "Harvard Business Review (HBR)", 
+                modality: "Recorded", 
+                themes: ["Business", "Leadership"], 
+                focus: "Business", 
+                status: "Completed", 
+                desc: "Specialization focused on core business skills for leaders, covering decision-making, budgeting, strategy, and practical business judgment in modern organizations.",
+                hasCertificate: true, 
+                url: "https://www.coursera.org/account/accomplishments/specialization/certificate/PDRL0DJN9YE7", 
+                img: "../assets/education/Strengthen Your Business Savvy Specialization.webp" 
             }
         ];
 
@@ -534,8 +576,15 @@
         const fCert = document.getElementById('filter-cert');
 
         // Extract unique categories for select menus
-        function populateSelect(selectEl, key) {
-            const uniqueVals = Array.from(new Set(education.map(e => e[key]).filter(v => v)));
+                function populateSelect(selectEl, key) {
+            let uniqueVals;
+            if (key === 'themes') {
+                const allThemes = education.flatMap(e => e.themes || []).filter(v => v);
+                uniqueVals = Array.from(new Set(allThemes)).sort();
+            } else {
+                uniqueVals = Array.from(new Set(education.map(e => e[key]).filter(v => v))).sort();
+            }
+            
             uniqueVals.forEach(val => {
                 const opt = document.createElement('option');
                 opt.value = val;
@@ -545,8 +594,9 @@
             });
         }
 
+
         function initData() {
-            populateSelect(fTheme, 'theme');
+            populateSelect(fTheme, 'themes');
             populateSelect(fModality, 'modality');
             populateSelect(fFocus, 'focus');
             populateSelect(fStatus, 'status');
@@ -562,7 +612,7 @@
             const needsCert = fCert.checked;
 
             const filtered = education.filter(e => {
-                if (vTheme !== 'ALL' && e.theme !== vTheme) return false;
+                if (vTheme !== 'ALL' && !e.themes.includes(vTheme)) return false;
                 if (vModality !== 'ALL' && e.modality !== vModality) return false;
                 if (vFocus !== 'ALL' && e.focus !== vFocus) return false;
                 if (vStatus !== 'ALL' && e.status !== vStatus) return false;
@@ -599,9 +649,12 @@
                         Certificate: No
                        </div>`;
 
+                let btnText = "View Certificate";
+                if (!item.hasCertificate && item.url) btnText = "View Program";
+                
                 const viewCertBtn = item.url 
                     ? `<div class="text-[11px] sm:text-[12px] font-bold text-white/30 group-hover:text-white/90 transition-colors flex items-center gap-1.5 mt-2 md:mt-0">
-                        View Certificate
+                        ${btnText}
                         <svg class="w-3.5 h-3.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
                        </div>`
                     : `<div class="text-[11px] sm:text-[12px] font-bold text-white/30 group-hover:text-white/90 transition-colors flex items-center gap-1.5 mt-2 md:mt-0 expand-btn">
@@ -609,7 +662,8 @@
                         <svg class="w-4 h-4 opacity-70 transition-transform duration-300 expand-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7"></path></svg>
                        </div>`;
 
-                const meta = [item.platform, item.theme, item.focus, item.status]
+                const displayTheme = item.themes.join(', ');
+                const meta = [item.platform, displayTheme, item.focus, item.status]
                             .filter(Boolean)
                             .join('<span class="text-white/20 mx-1.5">|</span>');
                 
@@ -627,7 +681,7 @@
                     
                     <!-- Thumbnail -->
                     <div class="w-full md:w-[12rem] h-[10rem] md:h-[8.5rem] shrink-0 self-center md:self-start rounded-xl bg-black/40 border border-white/5 overflow-hidden flex items-center justify-center relative shadow-inner">
-                        <img src="${item.img}" alt="${item.title}" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-300" onerror="this.src=''; this.parentElement.innerHTML='<svg class=\\'w-8 h-8 text-white/20\\' fill=\\'none\\' stroke=\\'currentColor\\' viewBox=\\'0 0 24 24\\'><path stroke-linecap=\\'round\\' stroke-linejoin=\\'round\\' stroke-width=\\'1\\' d=\\'M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253\\\'></path></svg>';" />
+                        <img loading="lazy" src="${item.img}" alt="${item.title}" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-300" onerror="this.src=''; this.parentElement.innerHTML='<svg class=\\'w-8 h-8 text-white/20\\' fill=\\'none\\' stroke=\\'currentColor\\' viewBox=\\'0 0 24 24\\'><path stroke-linecap=\\'round\\' stroke-linejoin=\\'round\\' stroke-width=\\'1\\' d=\\'M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253\\\'></path></svg>';" />
                     </div>
                     
                     <!-- Info Center -->
@@ -637,7 +691,7 @@
                         <div class="text-white/50 text-[12px] sm:text-[13px] tracking-wide font-medium flex flex-wrap gap-y-1 mb-2">
                             ${meta}
                         </div>
-                        <p class="desc-text text-white/30 text-[12px] line-clamp-2 leading-relaxed mt-1 transition-all duration-300">${item.desc}</p>
+                        <p class="desc-text text-white/30 text-[12px] line-clamp-3 leading-relaxed mt-1 transition-all duration-300">${item.desc}</p>
                     </div>
 
                     <!-- Actions Right -->
@@ -660,12 +714,12 @@
             const desc = el.querySelector('.desc-text');
             const icon = el.querySelector('.expand-icon');
             if (desc) {
-                if (desc.classList.contains('line-clamp-2')) {
-                    desc.classList.remove('line-clamp-2');
+                if (desc.classList.contains('line-clamp-3')) {
+                    desc.classList.remove('line-clamp-3');
                     if (icon) icon.style.transform = 'rotate(180deg)';
                     el.classList.remove('hover:-translate-y-1');
                 } else {
-                    desc.classList.add('line-clamp-2');
+                    desc.classList.add('line-clamp-3');
                     if (icon) icon.style.transform = 'rotate(0deg)';
                     el.classList.add('hover:-translate-y-1');
                 }

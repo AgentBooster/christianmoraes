@@ -48,7 +48,7 @@
             -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); mask-composite: exclude; pointer-events: none;
         }
 
-        /* NAVEGACIÓN GLOBAL */
+        /* GLOBAL NAVIGATION */
         .nav-link {
             padding: 8px 12px;
             border-radius: 999px;
@@ -87,7 +87,7 @@
 
     <div class="relative z-10 w-full flex flex-col items-center px-4 py-8 md:py-12 min-h-screen">
         
-        <!-- Barra de Navegación Global -->
+        <!-- Global Navigation Bar -->
         <nav class="liquid-glass glass-edge px-1.5 py-1.5 md:px-3 md:py-2.5 rounded-full mb-12 md:mb-28 flex space-x-0.5 md:space-x-1.5 items-center justify-center max-w-[95vw]">
             <a href="../index.html" class="nav-link">Home</a>
             <a href="projects.html" class="nav-link active">Projects</a>
@@ -133,7 +133,7 @@
 
             <!-- PROJECTS GRID -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-7 w-full" id="projects-grid">
-                <!-- Renderizado por Javascript -->
+                <!-- Rendered by Javascript -->
             </div>
             
             <!-- EMPTY STATE -->
@@ -147,37 +147,38 @@
     <script>
         // --- DATA LAYER ---
         const projects = [
-            { id: 1, title: 'C-PhysEngine', desc: '2D Physics engine simulation utilizing core C structures and optimization capabilities.', areas: ['CS Projects'], techs: ['C-Family'], featured: true, url: 'https://github.com/AgentBooster/portfolio-projects/tree/main/CS_Projects_Py_CPP_Swift_SQL/c-family/c-physengine', img: '../assets/projects/cover_physengine2d.png' },
-            { id: 2, title: 'Financial Tracker', desc: 'Analytical command line utility for tracking currency rates, stock market actions and analyzing financial data.', areas: ['CS Projects'], techs: ['Python'], featured: false, url: 'https://github.com/AgentBooster/portfolio-projects/tree/main/CS_Projects_Py_CPP_Swift_SQL/python/financial_tracker', img: '../assets/projects/cover_financial_tracker.jpeg' },
-            { id: 3, title: 'Python Agent', desc: 'Intelligent script orchestrator exploring Python based autonomous agent capabilities.', areas: ['CS Projects', 'Agents/Automation'], techs: ['Python'], featured: false, url: 'https://github.com/AgentBooster/portfolio-projects/tree/main/CS_Projects_Py_CPP_Swift_SQL/python/python_agent', img: '../assets/projects/cover_python_agent.png' },
-            { id: 4, title: 'Portfolio Engine', desc: 'SQL infrastructure designed for high-performance portfolio data management and queries.', areas: ['CS Projects'], techs: ['SQL'], featured: false, url: 'https://github.com/AgentBooster/portfolio-projects/tree/main/CS_Projects_Py_CPP_Swift_SQL/sql/portfolio_engine', img: '../assets/projects/cover_portfolio_engine.jpeg' },
-            { id: 5, title: 'KineticGuard', desc: 'iOS application utilizing SRPE and ACWR calculations to supervise training workloads and system states.', areas: ['CS Projects'], techs: ['Swift'], featured: true, url: 'https://github.com/AgentBooster/portfolio-projects/tree/main/CS_Projects_Py_CPP_Swift_SQL/swift/KineticGuard', img: '../assets/projects/cover_kineticguard.png' },
-            { id: 6, title: 'LittleLemonSuite', desc: 'iOS application suite focusing on intuitive interfaces and component reusability.', areas: ['CS Projects'], techs: ['Swift'], featured: false, url: 'https://github.com/AgentBooster/portfolio-projects/tree/main/CS_Projects_Py_CPP_Swift_SQL/swift/LittleLemonSuite', img: '../assets/projects/cover_littlelemonsuite.jpg' },
-            { id: 7, title: 'Neural Time Series Forecaster', desc: 'Deep learning models utilizing GRU/LSTM architectures for advanced sequence forecasting.', areas: ['Machine Learning'], techs: ['Python', 'TensorFlow', 'TypeScript'], featured: true, url: 'https://github.com/AgentBooster/portfolio-projects/tree/main/Machine_Learning_Deep_Learning/neural_time_series_forecaster_gru', img: '../assets/projects/cover_gru.png' },
-            { id: 8, title: 'Vision Image Classifier CNN', desc: 'Computer vision framework employing Convolutional Neural Networks for precise categorization.', areas: ['Machine Learning'], techs: ['Python', 'TensorFlow'], featured: true, url: 'https://github.com/AgentBooster/portfolio-projects/tree/main/Machine_Learning_Deep_Learning/vision_image_classifier_cnn', img: '../assets/projects/cover_cnn.png' },
-            { id: 9, title: 'Estetia Page', desc: 'Modern responsive web application specifically tailored for an aesthetics clinic.', areas: ['Web Application'], techs: ['HTML/JS', 'TypeScript'], featured: false, url: 'https://github.com/AgentBooster/portfolio-projects/tree/main/Software_Frontend/estetia_page', img: '../assets/projects/cover_estetia.png' },
-            { id: 10, title: 'Fisia Software', desc: 'Functional software application tailored for physiotherapy clinics and medical data presentation.', areas: ['Web Application'], techs: ['HTML/JS'], featured: false, url: 'https://github.com/AgentBooster/portfolio-projects/tree/main/Software_Frontend/fisia_software', img: '../assets/projects/cover_fisia.png' },
-            { id: 11, title: 'Widget Web Agent', desc: 'Embeddable multi-agent frontend widget showcasing external dynamic reactivity.', areas: ['Agents/Automation'], techs: ['React/Vite', 'TypeScript'], featured: false, url: 'https://github.com/AgentBooster/portfolio-projects/tree/main/Widget_Web_Agent', img: '../assets/projects/cover_widget_web_agent.jpeg' },
-            { id: 12, title: 'n8n Automations', desc: 'Collection of modular JSON workflows integrating complex automated data pipelines.', areas: ['Agents/Automation'], techs: ['Automation (n8n)'], featured: false, url: 'https://github.com/AgentBooster/portfolio-projects/tree/main/n8n_JSON', img: '../assets/projects/cover_n8n.png' },
-            { id: 13, title: 'Risolvia', desc: 'Advanced functional web application developed for the legal sector, providing end-to-end data processing.', areas: ['Web Application'], techs: ['React/Vite', 'TypeScript'], featured: false, url: 'https://github.com/AgentBooster/portfolio-projects/tree/main/Software_Frontend/risolvia', img: '../assets/projects/cover_risolvia.png' },
-            { id: 14, title: 'AgentBooster Web', desc: 'Advanced multi-route commercial web application serving as the primary hub.', areas: ['Web Application'], techs: ['React/Vite', 'TypeScript'], featured: true, url: 'https://github.com/AgentBooster/portfolio-projects/tree/main/Software_Frontend/agentbooster', img: '../assets/projects/cover_agentbooster.png' }
+            { id: 1, title: 'C-PhysEngine', desc: '2D Physics engine simulation utilizing core C structures and optimization capabilities.', areas: ['CS Projects'], techs: ['C-Family'], featured: true, url: 'https://github.com/AgentBooster/portfolio-projects/tree/main/CS_Projects_Py_CPP_Swift_SQL/c-family/c-physengine', img: '../assets/projects/cover_physengine2d.webp' },
+            { id: 2, title: 'Financial Tracker', desc: 'Analytical command line utility for tracking currency rates, stock market actions and analyzing financial data.', areas: ['CS Projects'], techs: ['Python'], featured: false, url: 'https://github.com/AgentBooster/portfolio-projects/tree/main/CS_Projects_Py_CPP_Swift_SQL/python/financial_tracker', img: '../assets/projects/cover_financial_tracker.webp' },
+            { id: 3, title: 'Python Agent', desc: 'Intelligent script orchestrator exploring Python based autonomous agent capabilities.', areas: ['CS Projects', 'Agents/Automation'], techs: ['Python'], featured: false, url: 'https://github.com/AgentBooster/portfolio-projects/tree/main/CS_Projects_Py_CPP_Swift_SQL/python/python_agent', img: '../assets/projects/cover_python_agent.webp' },
+            { id: 4, title: 'Portfolio Engine', desc: 'SQL infrastructure designed for high-performance portfolio data management and queries.', areas: ['CS Projects'], techs: ['SQL'], featured: false, url: 'https://github.com/AgentBooster/portfolio-projects/tree/main/CS_Projects_Py_CPP_Swift_SQL/sql/portfolio_engine', img: '../assets/projects/cover_portfolio_engine.webp' },
+            { id: 5, title: 'KineticGuard', desc: 'iOS application utilizing SRPE and ACWR calculations to supervise training workloads and system states.', areas: ['CS Projects'], techs: ['Swift'], featured: true, url: 'https://github.com/AgentBooster/portfolio-projects/tree/main/CS_Projects_Py_CPP_Swift_SQL/swift/KineticGuard', img: '../assets/projects/cover_kineticguard.webp' },
+            { id: 6, title: 'LittleLemonSuite', desc: 'iOS application suite focusing on intuitive interfaces and component reusability.', areas: ['CS Projects'], techs: ['Swift'], featured: false, url: 'https://github.com/AgentBooster/portfolio-projects/tree/main/CS_Projects_Py_CPP_Swift_SQL/swift/LittleLemonSuite', img: '../assets/projects/cover_littlelemonsuite.webp' },
+            { id: 7, title: 'Neural Time Series Forecaster', desc: 'Deep learning models utilizing GRU/LSTM architectures for advanced sequence forecasting.', areas: ['Machine Learning'], techs: ['Python', 'TensorFlow', 'TypeScript'], featured: true, url: 'https://github.com/AgentBooster/portfolio-projects/tree/main/Machine_Learning_Deep_Learning/neural_time_series_forecaster_gru', img: '../assets/projects/cover_gru.webp' },
+            { id: 8, title: 'Vision Image Classifier CNN', desc: 'Computer vision framework employing Convolutional Neural Networks for precise categorization.', areas: ['Machine Learning'], techs: ['Python', 'TensorFlow'], featured: true, url: 'https://github.com/AgentBooster/portfolio-projects/tree/main/Machine_Learning_Deep_Learning/vision_image_classifier_cnn', img: '../assets/projects/cover_cnn.webp' },
+            { id: 9, title: 'Estetia Page', desc: 'Modern responsive web application specifically tailored for an aesthetics clinic.', areas: ['Web Application'], techs: ['HTML/JS', 'TypeScript'], featured: false, url: 'https://github.com/AgentBooster/portfolio-projects/tree/main/Software_Frontend/estetia_page', img: '../assets/projects/cover_estetia.webp' },
+            { id: 10, title: 'Fisia Software', desc: 'Functional software application tailored for physiotherapy clinics and medical data presentation.', areas: ['Web Application'], techs: ['HTML/JS'], featured: false, url: 'https://github.com/AgentBooster/portfolio-projects/tree/main/Software_Frontend/fisia_software', img: '../assets/projects/cover_fisia.webp' },
+            { id: 11, title: 'Widget Web Agent', desc: 'Embeddable multi-agent frontend widget showcasing external dynamic reactivity.', areas: ['Agents/Automation'], techs: ['React/Vite', 'TypeScript'], featured: false, url: 'https://github.com/AgentBooster/portfolio-projects/tree/main/Widget_Web_Agent', img: '../assets/projects/cover_widget_web_agent.webp' },
+            { id: 12, title: 'n8n Automations', desc: 'Collection of modular JSON workflows integrating complex automated data pipelines.', areas: ['Agents/Automation'], techs: ['n8n'], featured: false, url: 'https://github.com/AgentBooster/portfolio-projects/tree/main/n8n_JSON', img: '../assets/projects/cover_n8n.webp' },
+            { id: 13, title: 'Risolvia', desc: 'Advanced functional web application developed for the legal sector, providing end-to-end data processing.', areas: ['Web Application'], techs: ['React/Vite', 'TypeScript'], featured: false, url: 'https://github.com/AgentBooster/portfolio-projects/tree/main/Software_Frontend/risolvia', img: '../assets/projects/cover_risolvia.webp' },
+            { id: 14, title: 'AgentBooster Web', desc: 'Advanced multi-route commercial web application serving as the primary hub.', areas: ['Web Application'], techs: ['React/Vite', 'TypeScript'], featured: true, url: 'https://github.com/AgentBooster/portfolio-projects/tree/main/Software_Frontend/agentbooster', img: '../assets/projects/cover_agentbooster.webp' }
         ];
 
         // Ensure "All" sort alphabetic default
         projects.sort((a,b) => a.title.localeCompare(b.title));
 
-        const SVG_ICONS = {
-            'Python': '<svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M14.25.18l.9.2.73.26.59.3.45.32.34.34.25.34.16.33.1.3.04.26.02.2-.01.13V8.5l-.05.63-.13.55-.21.46-.26.38-.3.31-.33.25-.35.19-.35.14-.33.1-.3.07-.26.04-.21.02H8.77l-.69.05-.59.14-.5.22-.41.27-.33.32-.27.35-.2.36-.15.37-.1.35-.07.32-.04.27-.02.21V13.06h-2.15l-.47-.03-.43-.1-.4-.15-.35-.21-.3-.26-.25-.3-.21-.35-.16-.39-.12-.41-.09-.44-.05-.45-.03-.46v-3.08l.05-.63.13-.55.21-.46.26-.38.3-.31.33-.25.35-.19.35-.14.33-.1.3-.07.26-.04.21-.02h.6v2.16l.03.46.09.45.14.42.21.37.28.31.34.24.41.17.47.1.53.03h2.15v-1.07l.03-.46.09-.45.14-.42.21-.37.28-.31.34-.24.41-.17.47-.1.53-.03h3.58l.68-.05.59-.14.5-.22.41-.27.33-.32.27-.35.2-.36.15-.37.1-.35.07-.32.04-.27.02-.21V3.24l-.16-.39-.12-.41-.09-.44-.05-.45-.03-.46h-3.58l-.68.05-.59.14-.5.22-.41.27-.33.32-.27.35-.2.36-.15.37-.1.35-.07.32-.04.27-.02.21zm-10.5 7.15c0 .32.26.58.58.58s.58-.26.58-.58-.26-.58-.58-.58-.58.26-.58.58zM9.75 23.82l-.9-.2-.73-.26-.59-.3-.45-.32-.34-.34-.25-.34-.16-.33-.1-.3-.04-.26-.02-.2.01-.13V15.5l.05-.63.13-.55.21-.46.26-.38.3-.31.33-.25.35-.19.35-.14.33-.1.3-.07.26-.04.21-.02h6.47l.69-.05.59-.14.5-.22.41-.27.33-.32.27-.35.2-.36.15-.37.1-.35.07-.32.04-.27.02-.21v-3.08h2.15l.47.03.43.1.4.15.35.21.3.26.25.3.21.35.16.39.12.41.09.44.05.45.03.46v3.08l-.05.63-.13.55-.21.46-.26.38-.3.31-.33.25-.35.19-.35.14-.33.1-.3.07-.26.04-.21.02h-.6v-2.16l-.03-.46-.09-.45-.14-.42-.21-.37-.28-.31-.34-.24-.41-.17-.47-.1-.53-.03H10.2l-.68.05-.59.14-.5.22-.41.27-.33.32-.27.35-.2.36-.15.37-.1.35-.07.32-.04.27-.02.21v5.33l.16.39.12.41.09.44.05.45.03.46h3.58l.68-.05.59-.14.5-.22.41-.27.33-.32.27-.35.2-.36.15-.37.1-.35.07-.32.04-.27.02-.21zM20.25 16.85c0-.32-.26-.58-.58-.58s-.58.26-.58.58.26.58.58.58.58-.26.58-.58z"/></svg>',
-            'Swift': '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21C6 19 3 13 3 13c3 4 8 5 11 3 0 0 1-5 7-7 0 0-4 7-9 12z"/></svg>',
-            'C-Family': '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-6l-2-6-2 6H2l5 4-2 6 5-4 5 4-2-6 5-4z"/></svg>',
-            'SQL': '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>',
-            'TypeScript': '<svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M1.125 0C.502 0 0 .502 0 1.125v21.75C0 23.498.502 24 1.125 24h21.75c.623 0 1.125-.502 1.125-1.125V1.125C24 .502 23.498 0 22.875 0H1.125zm16.553 19.388c-2.455 0-3.666-1.126-3.666-3.144 0-2.316 1.83-3.606 4.398-3.606.87 0 1.644.204 2.226.486l-.582 2.658c-.516-.294-1.182-.456-1.848-.456-.63 0-1.104.228-1.104.75 0 .576.816.636 1.956 1.05 1.584.582 2.502 1.536 2.502 2.928 0 1.956-1.632 3.252-4.14 3.252-1.02 0-2.004-.264-2.616-.6l.666-2.61c.642.342 1.398.582 2.232.582.726 0 1.176-.252 1.176-.78 0-.492-.474-.648-1.74-1.092zM10.875 11.25V23.25H7.725v-12H2.25V8.25H16.5v3H10.875z"/></svg>',
-            'HTML/JS': '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 18l6-6-6-6"/><path d="M8 6l-6 6 6 6"/></svg>',
-            'React/Vite': '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>',
-            'Automation (n8n)': '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>',
-            'TensorFlow': '<svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M11.238 2.368a1.595 1.595 0 0 1 1.524 0l8.03 4.636a1.595 1.595 0 0 1 .798 1.382v9.27a1.595 1.595 0 0 1-.798 1.38l-8.03 4.637a1.595 1.595 0 0 1-1.524 0l-8.03-4.637a1.595 1.595 0 0 1-.798-1.38v-9.271a1.595 1.595 0 0 1 .798-1.382l8.03-4.636h.001Zm3.336 4.908-2.574 1.486v10.038l2.574-1.486V7.276ZM9.426 7.276l2.574 1.486v10.038l-2.574-1.486V7.276Z"/></svg>',
-            'AreaDefault': '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>'
+        const TECH_ICONS = {
+            'Python': '../assets/projects/python-fill-svgrepo-com.svg',
+            'Swift': '../assets/projects/swift-svgrepo-com (1).svg',
+            'C-Family': '../assets/projects/icons8-c++.svg',
+            'SQL': '../assets/projects/database-sql-svgrepo-com.svg',
+            'TypeScript': '../assets/projects/language-typescript-svgrepo-com.svg',
+            'HTML/JS': '../assets/projects/logo-javascript-svgrepo-com.svg',
+            'React/Vite': '../assets/projects/logo-react-svgrepo-com.svg',
+            'n8n': '../assets/projects/N8n--Streamline-Simple-Icons.svg',
+            'TensorFlow': '../assets/projects/tensorflow-svgrepo-com.svg'
         };
+
+        const AREA_ICON = '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" class="opacity-70" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>';
 
         const uniqueAreas = Array.from(new Set(projects.flatMap(p => p.areas)));
         const uniqueTechs = Array.from(new Set(projects.flatMap(p => p.techs)));
@@ -194,7 +195,7 @@
             uniqueAreas.forEach(area => {
                 const btn = document.createElement('button');
                 btn.className = `tag-pill flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 text-[13px] font-medium text-white/70 hover:bg-white/10 hover:text-white`;
-                btn.innerHTML = `${SVG_ICONS['AreaDefault']} <span>${area}</span>`;
+                btn.innerHTML = `${AREA_ICON} <span>${area}</span>`;
                 btn.onclick = () => toggleTag(area, btn);
                 areasContainer.appendChild(btn);
             });
@@ -202,8 +203,10 @@
             uniqueTechs.forEach(tech => {
                 const btn = document.createElement('button');
                 btn.className = `tag-pill flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 text-[13px] font-medium text-white/70 hover:bg-white/10 hover:text-white`;
-                const icon = SVG_ICONS[tech] || SVG_ICONS['AreaDefault'];
-                btn.innerHTML = `${icon} <span>${tech}</span>`;
+                const iconSrc = TECH_ICONS[tech];
+                btn.innerHTML = iconSrc 
+                    ? `<img src="${iconSrc}" class="w-4 h-4 opacity-70" alt="${tech}"> <span>${tech}</span>` 
+                    : `${AREA_ICON} <span>${tech}</span>`;
                 btn.onclick = () => toggleTag(tech, btn);
                 techContainer.appendChild(btn);
             });
@@ -241,13 +244,17 @@
             emptyState.classList.remove('flex');
 
             filteredProjects.forEach(proj => {
-                const techsHtml = proj.techs.map(t => `<span class="bg-white/5 border border-white/10 px-2 py-1 rounded text-white/60">${t}</span>`).join('');
+                const techsHtml = proj.techs.map(t => {
+                    const iconSrc = TECH_ICONS[t];
+                    const imgTag = iconSrc ? `<img src="${iconSrc}" class="w-3.5 h-3.5 opacity-60 mr-1.5 inline pointer-events-none" alt="">` : '';
+                    return `<span class="bg-white/5 border border-white/10 px-2 py-1 flex items-center rounded text-white/60">${imgTag}${t}</span>`;
+                }).join('');
                 const areasHtml = proj.areas.map(a => `<span class="text-white/30 truncate ml-1 text-xs uppercase tracking-widest">${a}</span>`).join('<span class="text-white/10 mx-1">-</span>');
 
                 const cardHTML = `
                 <a href="${proj.url}" target="_blank" rel="noopener noreferrer" class="liquid-glass glass-edge rounded-2xl overflow-hidden flex flex-col group cursor-pointer border border-white/10 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_20px_40px_rgba(0,0,0,0.6)]">
                     <div class="h-48 w-full bg-[#030303] relative overflow-hidden border-b border-white/5">
-                        <img src="${proj.img}" alt="${proj.title}" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 z-0 text-transparent">
+                        <img loading="lazy" src="${proj.img}" alt="${proj.title}" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 z-0 text-transparent">
                         <div class="absolute inset-0 bg-gradient-to-t from-black border-transparent to-transparent opacity-80 z-10 pointer-events-none"></div>
                     </div>
                     <div class="p-6 flex-grow flex flex-col">

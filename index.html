@@ -23,7 +23,7 @@
             min-height: 100vh;
         }
 
-        /* FONDO - ESCENA DE ILUMINACIÓN */
+        /* BACKGROUND - LIGHTING SCENE */
         .background-container {
             position: fixed;
             inset: 0;
@@ -67,7 +67,7 @@
         }
 
 
-        /* EFECTO LIQUID GLASS */
+        /* LIQUID GLASS EFFECT */
         .liquid-glass {
             background: linear-gradient(
                 135deg,
@@ -118,7 +118,7 @@
 
 
 
-        /* NAVEGACIÓN GLOBAL */
+        /* GLOBAL NAVIGATION */
         .nav-link {
             padding: 8px 12px;
             border-radius: 999px;
@@ -154,7 +154,7 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
 
-        /* HELPERS PARA SCROLL HORIZONTAL */
+        /* HORIZONTAL SCROLL HELPERS */
         .no-scrollbar::-webkit-scrollbar {
             display: none;
         }
@@ -163,7 +163,7 @@
             scrollbar-width: none; /* Firefox */
         }
 
-        /* BOTONES SOCIALES */
+        /* SOCIAL BUTTONS */
         .social-btn {
             width: 62px;
             height: 62px;
@@ -186,7 +186,7 @@
             transform: translateY(-4px);
         }
 
-        /* LLUVIA DE EMOJIS */
+        /* EMOJI RAIN */
         .falling-emoji {
             position: fixed;
             font-size: 28px;
@@ -195,7 +195,7 @@
             user-select: none;
         }
 
-        /* CURSOR DE ESCRITURA */
+        /* TYPING CURSOR */
         .typing-cursor::after {
             content: '';
             display: inline-block;
@@ -217,16 +217,16 @@
 </head>
 <body class="flex flex-col items-center">
     
-    <!-- Fondo fijo -->
+    <!-- Fixed Background -->
     <div class="background-container">
         <div class="neon-ring"></div>
         <div class="stage-light"></div>
     </div>
 
-    <!-- Contenedor de scroll real -->
+    <!-- Main Scroll Container -->
     <div class="relative z-10 w-full flex flex-col items-center px-4 py-8 md:py-12 min-h-screen">
         
-        <!-- Barra de Navegación Global -->
+        <!-- Global Navigation Bar -->
         <nav class="liquid-glass glass-edge px-1.5 py-1.5 md:px-3 md:py-2.5 rounded-full mb-12 md:mb-28 flex space-x-0.5 md:space-x-1.5 items-center justify-center max-w-[95vw]">
             <a href="index.html" class="nav-link active">Home</a>
             <a href="pages/projects.html" class="nav-link">Projects</a>
@@ -234,14 +234,14 @@
             <a href="pages/about.html" class="nav-link">About</a>
         </nav>
 
-        <!-- Contenido principal -->
+        <!-- Main Content -->
         <main class="w-full max-w-6xl flex flex-col items-center flex-grow justify-center pb-20">
             
             <div class="flex flex-col md:flex-row items-center justify-center gap-12 md:gap-14 w-full text-center md:text-left">
-                <!-- Foto de Perfil -->
+                <!-- Profile Picture -->
                 <div id="profile-pic" class="w-[13rem] h-[13rem] md:w-[17rem] md:h-[17rem] lg:w-[18rem] lg:h-[18rem] rounded-full p-1 liquid-glass glass-edge flex-shrink-0 cursor-pointer transition-transform active:scale-95">
                     <div class="profile-inner">
-                        <img src="assets/me.png" 
+                        <img src="assets/me.webp" 
                              alt="Avatar" 
                              draggable="false"
                              oncontextmenu="return false;"
@@ -249,7 +249,7 @@
                     </div>
                 </div>
 
-                <!-- Textos Hero -->
+                <!-- Hero Texts -->
                 <div class="flex-1 md:max-w-3xl overflow-visible">
                     <h1 id="user-name" class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-8xl font-bold tracking-tighter mb-5 drop-shadow-2xl typing-cursor min-h-[1.2em] break-words"></h1>
                     
@@ -261,14 +261,14 @@
                 </div>
             </div>
 
-            <!-- Botones de Acción y Redes -->
+            <!-- Action Buttons & Socials -->
             <div class="mt-14 md:mt-16 flex flex-col sm:flex-row items-center justify-center gap-8 w-full">
                 <button class="liquid-glass glass-edge px-11 md:px-15 py-[1.125rem] md:py-[1.375rem] rounded-full flex items-center gap-3 font-bold text-[0.95rem] md:text-[1.05rem] tracking-wide uppercase transition-all hover:bg-white/10 active:scale-95 w-fit justify-center">
                     Download CV
                     <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 17V3"/><path d="m6 11 6 6 6-6"/><path d="M19 21H5"/></svg>
                 </button>
 
-                <!-- Redes sociales -->
+                <!-- Social Networks -->
                 <div class="flex gap-5">
                     <a href="https://github.com/AgentBooster/portfolio-projects" class="liquid-glass glass-edge social-btn" title="GitHub" target="_blank" rel="noopener noreferrer">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32" aria-label="GitHub">
@@ -292,7 +292,7 @@
     </div>
 
     <script>
-        // Emojis tecnológicos
+        // Tech Emojis
         const emojiList = ['🤖', '🧠', '🦾', '⚙️', '💻', '🌐', '🔋', '⚡', '💡', '👨‍💻', '📈', '🚀', '☁️', '🔗', '💼', '👋'];
 
         function startEmojiRain() {
@@ -324,7 +324,7 @@
             }
         }
 
-        // Efecto Typewriter secuencia completa
+        // Full Typewriter sequence effect
         async function typeWriter() {
             const nameElement = document.getElementById('user-name');
             const introText = "Hi, my name is...";
