@@ -212,6 +212,30 @@
             background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.35) 55%, rgba(0,0,0,0.05) 100%);
         }
 
+        /* Hero Image Corner for Interest Cards */
+        .card-image-corner {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 220px;
+            height: 220px;
+            background-size: cover;
+            background-position: center;
+            z-index: 1; /* Below content (2) and audio button (10) */
+            pointer-events: none;
+            user-select: none;
+            -webkit-user-drag: none;
+            opacity: 0.65;
+            mask-image: radial-gradient(circle at top right, black 25%, transparent 70%);
+            -webkit-mask-image: radial-gradient(circle at top right, black 25%, transparent 70%);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .interest-card:hover .card-image-corner {
+            opacity: 0.9;
+            transform: scale(1.05) translateX(-2px) translateY(2px);
+        }
+
         /* Content layout */
         .card-content {
             position: relative;
@@ -448,6 +472,7 @@
 
                 <!-- Card 1: Remo (icon) -->
                 <div class="interest-card card-icon-bg">
+                    <div class="card-image-corner" style="background-image: url('../assets/about/me_rowing.webp');"></div>
                     <button class="audio-btn" data-audio-src="../assets/about/Rowing.mp3" aria-label="Play narration">
                         <svg class="icon-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                         <svg class="icon-pause" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
@@ -498,6 +523,7 @@
 
                 <!-- Card 3: Fitness & Bienestar (icon) -->
                 <div class="interest-card card-icon-bg">
+                    <div class="card-image-corner" style="background-image: url('../assets/about/me_fitness.webp');"></div>
                     <button class="audio-btn" data-audio-src="../assets/about/Fitness.mp3" aria-label="Play narration">
                         <svg class="icon-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                         <svg class="icon-pause" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
@@ -574,6 +600,7 @@
 
                 <!-- Card 5: Tiro Deportivo y Naturaleza -->
                 <div class="interest-card card-icon-bg">
+                    <div class="card-image-corner" style="background-image: url('../assets/about/me_nature.webp');"></div>
                     <button class="audio-btn" data-audio-src="../assets/about/Nature.mp3" aria-label="Play narration">
                         <svg class="icon-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                         <svg class="icon-pause" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
